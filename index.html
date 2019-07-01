@@ -3,9 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style/style.css">
     <title>Jungscharlager Infoscreen</title>
+    <script src="./scripts/news.js"></script>
+    <script src="./scripts/time.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-database.js"></script>
 </head>
 <body>
-    
+    <div id="mainScreen">
+        <video src="./video/video_1.mp4" autoplay controls></video>
+    </div>
+
+    <div id="sideScreen">
+        <h1>Jungscharlager Sindelburg</h1>
+        <p id="currentDay"></p>
+        <p id="currentTime"></p>
+
+        <div id="weatherWrapper"></div>
+
+    </div>
+
+    <div id="newsScreen">
+        <div id="newsWrapper"></div>
+    </div>
 </body>
 </html>
