@@ -7,20 +7,32 @@
     <title>Jungscharlager Infoscreen</title>
     <script src="./scripts/news.js"></script>
     <script src="./scripts/time.js"></script>
+    <script src="./scripts/jobManager.js"></script>
+    <script src="./scripts/weather.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-database.js"></script>
+    <!-- <script src="https://api.openweathermap.org/data/2.5/weather?id=2782555&appid=aeeb25a43d3f412925346cf7e2c8b58d&units=metric"></script> -->
 </head>
 <body>
+    <div id="jobWrapper">
+        <div id="clear">clear</div>
+    </div>
+
     <div id="mainScreen">
-        <video src="./video/video_1.mp4" autoplay controls></video>
+        <div id="videoWrapper"><video src="./video/video_1.mp4" loop autoplay controls></video></div>  
     </div>
 
     <div id="sideScreen">
-        <h1>Jungscharlager Sindelburg</h1>
-        <p id="currentDay"></p>
-        <p id="currentTime"></p>
+        <div id="timeWrapper">
+            <p id="currentDay"></p>
+            <p id="currentTime"></p>
+        </div>
 
         <div id="weatherWrapper"></div>
+
+        <div id="logoWrapper">
+            <img src="./img/PfarrLogo.jpg" alt="cannot display image">
+        </div>
 
     </div>
 
