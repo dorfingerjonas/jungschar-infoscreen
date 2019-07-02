@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'Gotham Light';
+    src: url(../fonts/Gotham-XLight.otf) format('opentype');
+  }
+
 body {
     width: 100vw;
     height: 100vh;
@@ -10,8 +15,8 @@ body {
 /* Main-Screen */
 
 #mainScreen {
-    width: 60vw;
-    height: 60vh;
+    width: 65.5vw;
+    height: 65.5vh;
     margin: 0 auto;
     position: absolute;
     top: 0;
@@ -20,51 +25,151 @@ body {
 
 #mainScreen video {
     width: 100%;
-    height: 100%;
     outline: none;
+    position: absolute;
+    top: .5vh;
+    right: 1vh;
+    box-shadow: 0px 0px 9px 1px rgba(179,179,179,1);
 }
 
+.job {
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.5) 2px 5px 15px 0px;
+    margin: 1vmin;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+    flex-direction: row;
+    width: 45vw;
+    height: auto;
+    float: left;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 300ms ease-in-out;
+}
+
+#wrapper {
+    width: 100vw;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#jobWrapper {
+    width: 100vw;
+    height: 80vh;
+    display: none;
+    align-items: center;
+    flex-direction: column;
+    flex-flow: wrap;
+    justify-content: center;
+    margin: 10vh 0;
+}
+
+.memberWrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+.memberBox {
+    background: green;
+    margin: 0 .5vmin;
+    width: 2vw;
+    height: 2vw;
+    transition: all 300ms ease-in-out;
+    cursor: pointer;
+    border-radius: 100%;
+}
+
+.selected {
+    background: red;
+}
+
+#clear {
+    border: 2px solid #858585;
+    color: #858585;
+    width: 5vw;
+    text-align: center;
+    padding: 10px;
+    position: absolute;
+    bottom: 1vw;
+    right: 2vw;
+    transition: all 300ms ease-in-out;
+    border-radius: 15px;
+}
+
+#clear:hover {
+    cursor: pointer;
+    background: #858585;
+    color: white;
+}
 
 /* Side-Screen */
 #sideScreen {
-    width: 40vw;
+    width: 33vw;
     height: 100vh;
     margin: 0 auto;
     position: absolute;
     top: 0;
     left: 0;
     display: flex;
-    /* justify-content: center; */
+    justify-content: space-around;
     align-items: center;
     flex-direction: column;
 }
 
-#sideScreen h1 {
-    font-size: 285%;
-}
-
 #sideScreen #currentDay, #sideScreen #currentTime {
-    font-size: 200%;
+    font-size: 125%;
 } 
 
+#timeWrapper, #weatherWrapper, #logoWrapper {
+    height: 32vh;
+    width: 100%;
+    margin-left: 2vh;
+    box-shadow: 0px 0px 9px 1px rgba(179,179,179,1);
+}
 
+#timeWrapper {
+    font-size: 235%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Gotham Light';
+}
+
+#timeWrapper #currentTime {
+    font-weight: 900;
+}
+
+#logoWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#logoWrapper img {
+    width: 45%;
+}
 
 /* Footer */
 #newsScreen {
-    width: 60vw;
-    height: 40vh;
+    width: 65.5vw;
+    height: 32vh;
     margin: 0 auto;
     position: absolute;
-    right: 0;
-    bottom: 0;
+    right: 1vh;
+    bottom: .7vh;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: justify;
+    box-shadow: 0px 0px 9px 1px rgba(179,179,179,1);
 }
 
 #newsScreen #newsWrapper {
-    width: 90%;
+    width: 95%;
     height: auto;
     font-size: 160%;
 }
