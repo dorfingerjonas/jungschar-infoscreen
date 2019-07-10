@@ -41,12 +41,7 @@ window.addEventListener('load', () => {
 
         const contentWrapper = document.getElementById('mainInfo');
         const newEntry = document.createElement('div');
-
-        // let i = document.createElement('i');
-        // i.setAttribute('class', 'far fa-sun');
-
-        // newEntry.appendChild(i);
-
+        
         let img = document.createElement('img');
         img.src = './img/sun.png';
         img.alt = 'cannot display img';

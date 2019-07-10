@@ -1,15 +1,16 @@
 window.addEventListener('load', () => {
+
     const firebaseConfig = {
         apiKey: "AIzaSyCNE1gB1GE1pFiC4MRcWpQjX0oi7YjB7XQ",
         authDomain: "jungscharlager-infoscreen.firebaseapp.com",
         databaseURL: "https://jungscharlager-infoscreen.firebaseio.com",
         projectId: "jungscharlager-infoscreen",
-        storageBucket: "",
+        storageBucket: "jungscharlager-infoscreen.appspot.com",
         messagingSenderId: "590263811336",
         appId: "1:590263811336:web:a74fb5400dc96ce7"
     };
       
-    firebase.initializeApp(firebaseConfig);
+    firebase.initializeApp(firebaseConfig);    
 
     setInterval(() => {
         nextNews();
@@ -20,31 +21,36 @@ window.addEventListener('load', () => {
     firebase.database().ref('public/news').once('value').then((snapshot) => {
 
         content = snapshot.val();
+        let first = true;
 
         for (let i = 0; i < content.length; i++) {
-            let title = content[i].title;
-            let text = content[i].text;
+            if (content[i].active) {
+                let title = content[i].title;
+                let text = content[i].text;
 
-            const contentWrapper = document.getElementById('newsWrapper');
-            const newNews = document.createElement('div');
+                const contentWrapper = document.getElementById('newsWrapper');
+                const newNews = document.createElement('div');
 
-            let titleElm = document.createElement('h2');
-            let textElm = document.createElement('p');
-        
-            let elements = [titleElm, textElm];
-            let output = [title, text];
+                let titleElm = document.createElement('h2');
+                let textElm = document.createElement('p');
+            
+                let elements = [titleElm, textElm];
+                let output = [title, text];
 
-            for (let i = 0; i < elements.length; i++) {
-                elements[i].textContent = output[i];
-                newNews.appendChild(elements[i]);
+                for (let i = 0; i < elements.length; i++) {
+                    elements[i].textContent = output[i];
+                    newNews.appendChild(elements[i]);
+                }
+
+                if (!first) {
+                    newNews.setAttribute('class', 'hide');
+                    newNews.style.opacity = 0;
+                }
+
+                first = false;
+
+                contentWrapper.appendChild(newNews);
             }
-
-            if (i !== 0) {
-                newNews.setAttribute('class', 'hide');
-                newNews.style.opacity = 0;
-            }
-
-            contentWrapper.appendChild(newNews);
         }
     });
 
