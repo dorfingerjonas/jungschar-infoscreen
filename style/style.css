@@ -32,7 +32,9 @@ body {
     box-shadow: 0px 0px 9px 1px rgba(179,179,179,1);
 }
 
-.job {
+/* Sub Pages */
+
+#jobWrapper .job {
     border-radius: 15px;
     box-shadow: rgba(0, 0, 0, 0.5) 2px 5px 15px 0px;
     margin: 1vmin;
@@ -54,17 +56,17 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: white;
 }
 
 #jobWrapper {
     width: 100vw;
-    height: 80vh;
+    height: 100vh;
     display: none;
     align-items: center;
     flex-direction: column;
     flex-flow: wrap;
     justify-content: center;
-    margin: 10vh 0;
 }
 
 .memberWrapper {
@@ -158,6 +160,7 @@ body {
     height: 100%;
     display: flex;
     align-items: center;
+    justify-content: center;
     flex-direction: column;
 }
 
@@ -233,4 +236,255 @@ body {
 
 .hide {
     display: none;
+}
+
+/* User-Interface */
+#userInterface {
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 8vw;
+    display: none;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    font-size: 120%;
+    user-select: none;
+}
+
+nav #navNews, nav #navJobs {
+    cursor: pointer;
+}
+
+nav #navBorder {
+    width: 4vw;
+    height: .5vmin;
+    background-color: cornflowerblue;
+    position: absolute;
+    left: 0;
+    top: 7vh;
+    transition: all 300ms ease-in-out;
+}
+
+#newsInterfaceWrapper {
+    width: 70vw;
+    height: 30vh;
+    display: none;
+    align-items: center;
+    flex-direction: column;
+}
+
+#editNews {
+    min-height: 85vh;
+    width: 70vw;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    position: relative;
+    top: -25vh;
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+    flex-direction: column;
+    border-radius: 10px;
+}
+
+#editNews div {
+    width: 80%;
+    border-radius: 10px;
+    box-shadow: 0px 0px 9px 1px rgba(179,179,179,1);
+    margin: 1vh 0;
+    padding: 10px;
+}
+
+#editNews i {
+    margin-right: 1vmin;
+    cursor: pointer;
+}
+
+#addNews {
+    z-index: 101;
+    width: 40vw;
+    height: 40vh;
+    position: absolute;
+    background-color: white;
+    padding: 1vw;
+    display: none;
+    justify-content: center;
+    flex-direction: column;
+    top: 25vh;
+    border-radius: 10px;
+    box-shadow: 0px 0px 9px 1px rgba(179,179,179,1);
+}
+
+#addNewsBtn {
+    position: absolute;
+    right: 5vw;
+    bottom: 5vh;
+    border-radius: 100%;
+    font-size: 2.5vw;
+    width: 4vw;
+    height: 4vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    box-shadow: 0px 0px 9px 1px rgba(179,179,179,1);
+    cursor: pointer;
+    transition: all 300ms ease-in-out;
+}
+
+#newsInterfaceWrapper input, #newsInterfaceWrapper textarea {
+    width: 97%;
+    resize: none;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid darkgray;
+    border-radius: 10px 10px 0 0;
+    transition: all 300ms ease-in-out;
+    margin-bottom: 2vh;
+    padding: 1vmin;
+    box-shadow: 0px 0px 9px 1px rgba(179,179,179,1);
+    font-family:'Arial Narrow Bold', sans-serif;
+    position: relative;
+    top: -2vh;
+}
+
+#newsInterfaceWrapper input:focus, #newsInterfaceWrapper textarea:focus {
+    border-bottom: 2px solid darkorange;
+}
+
+#newsInterfaceWrapper button {
+    border: 2px solid #858585;
+    background: white;
+    color: #858585;
+    width: 30%;
+    text-align: center;
+    padding: 10px;
+    transition: all 300ms ease-in-out;
+    border-radius: 15px;
+    outline: none;
+    user-select: none;
+    position: absolute;
+    bottom: 2vh;
+}
+
+#newsInterfaceWrapper button:hover {
+    cursor: pointer;
+    background: #858585;
+    color: white;
+}
+
+#newsInterfaceWrapper label {
+    position: absolute;
+    bottom: 11vh;
+    right: 1.5vw;
+    z-index: 1;
+}
+
+#errorField {
+    position: absolute;
+    bottom: 8vh;
+}
+
+#jobsInterfaceWrapper {
+    width: 90vw;
+    height: 90vh;
+    display: none;
+    justify-content: center;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding-right: 5vw;
+    padding-top: 5vw;
+    padding-bottom: 2vw;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+#jobsInterfaceWrapper .plusMinusBtn {
+    border-radius: 50%;
+    width: 1.5vw;
+    height: 1.5vw;
+    font-size: 1vw;
+    color: white;
+    background-color: #858585;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+#jobsInterfaceWrapper .job {
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.5) 2px 5px 15px 0px;
+    margin: 1.5vmin;
+    padding: 0 10px;
+    display: flex;
+    flex-direction: column;
+    width: 20vw;
+    height: auto;
+    /* justify-content: center; */
+    align-items: flex-start;
+    transition: all 300ms ease-in-out;
+    user-select: none;
+}
+
+#jobsInterfaceWrapper .attribute {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#jobsInterfaceWrapper .attribute div {
+    display: flex;
+    flex-direction: row;
+}
+
+#jobsInterfaceWrapper .attribute div i {
+    margin: .5vmin;
+}
+
+#jobsInterfaceWrapper .dayCB {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+
+#jobsInterfaceWrapper input {
+    width: 1.4vw;
+    height: 1.4vw;
+}
+
+#jobsInterfaceWrapper .btnWrapper {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin: 1vmin 0;
+}
+
+#jobsInterfaceWrapper .btnWrapper span {
+    padding: 1vmin;
+    border-radius: 10px;
+    color: cornflowerblue;
+    border: 2px solid cornflowerblue;
+    cursor: pointer;
+    transition: all 300ms ease-in-out;
+}
+
+#jobsInterfaceWrapper .btnWrapper span:hover {
+    background-color: cornflowerblue;
+    color: white;
 }
