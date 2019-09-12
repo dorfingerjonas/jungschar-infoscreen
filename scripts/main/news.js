@@ -1,18 +1,23 @@
 window.addEventListener('load', () => {
+    let interval;
+    news(); 
+});
 
-    const firebaseConfig = {
-        apiKey: "AIzaSyCNE1gB1GE1pFiC4MRcWpQjX0oi7YjB7XQ",
-        authDomain: "jungscharlager-infoscreen.firebaseapp.com",
-        databaseURL: "https://jungscharlager-infoscreen.firebaseio.com",
-        projectId: "jungscharlager-infoscreen",
-        storageBucket: "jungscharlager-infoscreen.appspot.com",
-        messagingSenderId: "590263811336",
-        appId: "1:590263811336:web:a74fb5400dc96ce7"
-    };
-      
-    firebase.initializeApp(firebaseConfig);    
+window.addEventListener('keydown', (event) => {
+    if (event.key === 'n') {
+        let wrapper = document.getElementById('newsWrapper');
+    while (wrapper.firstChild) {
+      wrapper.removeChild(wrapper.firstChild);
+    }
 
-    setInterval(() => {
+    clearInterval(interval);
+
+    news();
+    }
+});
+
+function news() {
+    interval = setInterval(() => {
         nextNews();
     }, 15000);
 
@@ -77,4 +82,4 @@ window.addEventListener('load', () => {
             news[visibleIndex].style.opacity = 1;
         }, 700);
     }
-});
+}

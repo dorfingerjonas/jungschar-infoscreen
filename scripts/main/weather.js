@@ -1,5 +1,23 @@
-window.addEventListener('load', () => {
+window.addEventListener('load', printWeather);
 
+window.addEventListener('keydown', () => {
+
+    if (event.key === 'w') {
+        let wrappers = [
+            document.getElementById('mainInfo'),
+            document.getElementById('subInfos')
+        ];
+
+        for (const wrapper of wrappers) {            
+            while (wrapper.firstChild) {
+                wrapper.removeChild(wrapper.firstChild);
+            }
+        }
+        printWeather();
+    }
+});
+
+function printWeather() {
     const key = 'aeeb25a43d3f412925346cf7e2c8b58d';
 
     fetch('https://api.openweathermap.org/data/2.5/weather?id=2782555&appid=' + key + '&units=metric')
@@ -60,4 +78,4 @@ window.addEventListener('load', () => {
     }).catch(() => {
         // catch any errors
     });
-});
+}

@@ -27,7 +27,7 @@ window.addEventListener('load', () => {
             let titleElm = document.createElement('h2');
             let textElm = document.createElement('p');
             let activeElm = document.createElement('i');
-            let deleteElm = document.createElement('i');
+            // let deleteElm = document.createElement('i');
             
             let elements = [titleElm, textElm];
             let output = [title, text];
@@ -38,7 +38,7 @@ window.addEventListener('load', () => {
                 activeElm.setAttribute('class', 'far fa-check-circle');
             }
 
-            deleteElm.setAttribute('class', 'far fa-trash-alt');
+            // deleteElm.setAttribute('class', 'far fa-trash-alt');
 
             for (let j = 0; j < elements.length; j++) {
                 elements[j].textContent = output[j];
@@ -54,19 +54,21 @@ window.addEventListener('load', () => {
 
                 if (active) {
                     activeElm.setAttribute('class', 'fas fa-ban');
+                    newNews.style.opacity = 1;
                 } else {
                     activeElm.setAttribute('class', 'far fa-check-circle');
+                    newNews.style.opacity = 0.3;
                 }
             });
             
-            deleteElm.addEventListener('click', () => {
-                // firebase.database().ref('public/news/' + i).remove();
-                // contentWrapper.removeChild(newNews);
-                console.log('this feature is currently not working.');                
-            });
+            // deleteElm.addEventListener('click', () => {
+            //     firebase.database().ref('public/news/' + i).remove();
+            //     contentWrapper.removeChild(newNews);
+            //     console.log('this feature is currently not working.');                
+            // });
 
             newNews.appendChild(activeElm);
-            newNews.appendChild(deleteElm);
+            // newNews.appendChild(deleteElm);
 
             contentWrapper.appendChild(newNews);
         }
@@ -88,59 +90,52 @@ window.addEventListener('load', () => {
                 });
                 errField.style.color = 'black';
                 errField.textContent = 'Ihre News wurde erfolgreich gespeichert.';
-            }
 
-            const contentWrapper = document.getElementById('editNews');
-            const newNews = document.createElement('div');
-            let active = true;
+                
+                const contentWrapper = document.getElementById('editNews');
+                const newNews = document.createElement('div');
+                let active = true;
+                
+                let titleElm = document.createElement('h2');
+                let textElm = document.createElement('p');
+                let activeElm = document.createElement('i');
+                
+                let elements = [titleElm, textElm];
+                let output = [title.value, text.value];          
+                
+                title.value = '';
+                text.value = '';
 
-            let titleElm = document.createElement('h2');
-            let textElm = document.createElement('p');
-            let activeElm = document.createElement('i');
-            let deleteElm = document.createElement('i');
-            
-            let elements = [titleElm, textElm];
-            let output = [title.value, text.value];
-
-            title.value = '';
-            text.value = ''            
-
-            if (active) {
-                activeElm.setAttribute('class', 'fas fa-ban');
-            } else {
-                activeElm.setAttribute('class', 'far fa-check-circle');
-            }
-
-            deleteElm.setAttribute('class', 'far fa-trash-alt');
-
-            for (let j = 0; j < elements.length; j++) {
-                elements[j].textContent = output[j];
-                newNews.appendChild(elements[j]);
-            }
-
-            activeElm.addEventListener('click', () => {
-                firebase.database().ref('public/news/' + i).update({
-                    active: !active
-                });
-
-                active = !active;
+                addNewsBtn.click();
 
                 if (active) {
                     activeElm.setAttribute('class', 'fas fa-ban');
                 } else {
                     activeElm.setAttribute('class', 'far fa-check-circle');
                 }
-            });
-            
-            deleteElm.addEventListener('click', () => {
-                firebase.database().ref('public/news/' + content.length).remove();
-                contentWrapper.removeChild(newNews);
-            });
 
-            newNews.appendChild(activeElm);
-            newNews.appendChild(deleteElm);
+                for (let j = 0; j < elements.length; j++) {
+                    elements[j].textContent = output[j];
+                    newNews.appendChild(elements[j]);
+                }
 
-            contentWrapper.appendChild(newNews);
+                activeElm.addEventListener('click', () => {
+                    firebase.database().ref('public/news/' + i).update({
+                        active: !active
+                    });
+
+                    active = !active;
+
+                    if (active) {
+                        activeElm.setAttribute('class', 'fas fa-ban');
+                    } else {
+                        activeElm.setAttribute('class', 'far fa-check-circle');
+                    }
+                });
+
+                newNews.appendChild(activeElm);
+                contentWrapper.appendChild(newNews);
+            }
         });
     });
 
@@ -339,6 +334,25 @@ window.addEventListener('load', () => {
             newJob.appendChild(buttonWrapper);
 
             contentWrapper.appendChild(newJob);
+            jobs[i].element = newJob;
         }
+
+        const searchInput = document.getElementById('searchInput');
+        const searchBtn = document.getElementById('searchBtn');
+
+        searchInput.addEventListener('input', () => {
+            console.log(searchInput.value.toLowerCase());
+            
+            
+            for (const job of jobs) {
+                console.log(job.name);
+                if (job.name.toLowerCase().includes(searchInput.value.toLowerCase())) {
+                    job.element.style.display = 'flex';
+                } else {
+                    job.element.style.display = 'none';
+                }
+            }
+        });
+
     });
 });

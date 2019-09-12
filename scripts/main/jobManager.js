@@ -7,10 +7,16 @@ window.addEventListener('load', () => {
 
         jobs = snapshot.val();
 
+        for (let i = 0; i < jobs.length; i++) {
+            firebase.database().ref('public/jobs/' + i).update({
+                taken: 0
+            });
+        }
+
         const currentTime = new Date();
 
         if (currentTime.getHours() <= 12) {
-            for (let i = 0; i < jobs.length; i++) {
+            for (let i = 0; i < jobs.length; i++) {                
                 if (jobs[i].morning) {
                     let name = jobs[i].name;
                     let members = jobs[i].members;
@@ -25,32 +31,36 @@ window.addEventListener('load', () => {
 
                     const memberElements = [];
 
-                    for (let i = 0; i < members; i++) {
+                    for (let j = 0; j < members; j++) {
                         let memberBox = document.createElement('div');
                         memberBox.setAttribute('class', 'memberBox');
 
                         memberElements.push(memberBox);
 
                         memberBox.addEventListener('click', () => {
-                            memberBox.classList.toggle('selected');
+                            
+                            firebase.database().ref(`public/jobs/${i}/taken`).once('value').then((snapshot) => {
+                                
+                                let taken = snapshot.val();
+                                
+                                memberBox.classList.toggle('selected');
 
-                            let isFull = '';
-
-                            for (const member of memberElements) {
-
-                                if (member.className.includes('selected')) {
-                                    isFull += 'true';
+                                if (memberBox.className.includes('selected') && taken+1 <= members) {
+                                    taken++;
                                 } else {
-                                    isFull += 'false';
+                                    taken--;
                                 }
-                            }
 
-                            if (!isFull.includes('false')) {
-                                newJob.style.background = 'rgba(255, 0, 0, 0.596)';                            
-                            } else {
-                                newJob.style.background = 'white';
-                            }
+                                firebase.database().ref('public/jobs/' + i).update({
+                                    taken: taken
+                                });
 
+                                if (taken === members) {
+                                    newJob.style.background = 'rgba(255, 0, 0, 0.596)';                            
+                                } else {
+                                    newJob.style.background = 'white';
+                                }
+                            });
                         });
 
                         memberWrapper.setAttribute('class', 'memberWrapper');
@@ -58,6 +68,7 @@ window.addEventListener('load', () => {
                     }
 
                     nameBox.textContent = name;
+                    nameBox.setAttribute('class', 'jobName');
                     newJob.appendChild(nameBox);
 
                     salaryBox.textContent = salary;
@@ -88,32 +99,36 @@ window.addEventListener('load', () => {
 
                     const memberElements = [];
 
-                    for (let i = 0; i < members; i++) {
+                    for (let j = 0; j < members; j++) {
                         let memberBox = document.createElement('div');
                         memberBox.setAttribute('class', 'memberBox');
 
                         memberElements.push(memberBox);
 
                         memberBox.addEventListener('click', () => {
-                            memberBox.classList.toggle('selected');
+                            
+                            firebase.database().ref(`public/jobs/${i}/taken`).once('value').then((snapshot) => {
+                                
+                                let taken = snapshot.val();
+                                
+                                memberBox.classList.toggle('selected');
 
-                            let isFull = '';
-
-                            for (const member of memberElements) {
-
-                                if (member.className.includes('selected')) {
-                                    isFull += 'true';
+                                if (memberBox.className.includes('selected') && taken+1 <= members) {
+                                    taken++;
                                 } else {
-                                    isFull += 'false';
+                                    taken--;
                                 }
-                            }
 
-                            if (!isFull.includes('false')) {
-                                newJob.style.background = 'rgba(255, 0, 0, 0.596)';                            
-                            } else {
-                                newJob.style.background = 'white';
-                            }
+                                firebase.database().ref('public/jobs/' + i).update({
+                                    taken: taken
+                                });
 
+                                if (taken === members) {
+                                    newJob.style.background = 'rgba(255, 0, 0, 0.596)';                            
+                                } else {
+                                    newJob.style.background = 'white';
+                                }
+                            });
                         });
 
                         memberWrapper.setAttribute('class', 'memberWrapper');
@@ -121,6 +136,7 @@ window.addEventListener('load', () => {
                     }
 
                     nameBox.textContent = name;
+                    nameBox.setAttribute('class', 'jobName');
                     newJob.appendChild(nameBox);
 
                     salaryBox.textContent = salary;
@@ -135,18 +151,23 @@ window.addEventListener('load', () => {
             }
         }
 
-    });
-
-    clearBtn.addEventListener('click', () => {
-        const memberElements = document.getElementsByClassName('memberBox');
-        const jobElements = document.getElementsByClassName('job');
-
-        for (const element of memberElements) {
-            element.classList.remove('selected');            
-        }
-
-        for (const element of jobElements) {
-            element.style.background = 'white';            
-        }
+        clearBtn.addEventListener('click', () => {
+            const memberElements = document.getElementsByClassName('memberBox');
+            const jobElements = document.getElementsByClassName('job');
+    
+            for (const element of memberElements) {
+                element.classList.remove('selected');            
+            }
+    
+            for (const element of jobElements) {
+                element.style.background = 'white';            
+            }
+    
+            for (let i = 0; i < jobs.length; i++) {
+                firebase.database().ref('public/jobs/' + i).update({
+                    taken: 0
+                });
+            }
+        });
     });
 });

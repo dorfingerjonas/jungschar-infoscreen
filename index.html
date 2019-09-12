@@ -12,10 +12,13 @@
     <script src="./scripts/main/weather.js"></script>
     <script src="./scripts/main/userInterface.js"></script>
     <script src="./scripts/main/videos.js"></script>
+    <script src="./scripts/initFirebase.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-database.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/6.2.4/firebase-storage.js"></script>
     <script src="https://kit.fontawesome.com/e7df220bd7.js"></script>
+    <script>
+        initFirebase();
+    </script>
 </head>
 <body>
     <div id="jobWrapper">
@@ -54,7 +57,12 @@
 
         </div>
 
-        <div id="jobsInterfaceWrapper"></div>
+        <div id="jobsInterfaceWrapper">
+            <div id="searchBar">
+                <input type="search" id="searchInput" placeholder="Suchen Sie nach einem Job">
+                <i class="fas fa-search" id="searchBtn"></i>
+            </div>
+        </div>
     </div>
 
     <div id="mainScreen">
