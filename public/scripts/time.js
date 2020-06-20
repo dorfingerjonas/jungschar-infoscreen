@@ -6,6 +6,7 @@ window.addEventListener('load', () => {
 
     socket.on('time', timestamp => {
         removeAllChildren(parent);
+
         const time = new Date(timestamp);
         const timeText = document.createElement('span');
         const dateText = document.createElement('span');
