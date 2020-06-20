@@ -23,7 +23,7 @@ window.addEventListener('load', () => {
         icon.alt = 'Bild konnte nicht geladen werden.';
 
         const temp = document.createElement('span');
-        temp.textContent = `${data.main.temp}°C`.replace('.', ',');
+        temp.textContent = `${parseInt(Math.round(data.main.temp))}°C`;
 
         for (const data of weatherData) {
             const newElement = document.createElement('div');
