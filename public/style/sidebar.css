@@ -1,0 +1,14 @@
+/* TimeBox */
+#timeBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'Roboto Thin', sans-serif;
+    font-size: 2vw;
+}
+
+#timeBox span:nth-child(1) {
+    font-size: 3.5vw;
+    margin-bottom: 2vh;
+}
