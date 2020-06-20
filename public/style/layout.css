@@ -1,6 +1,7 @@
 body {
     overflow: hidden;
     padding: 1vh .5vw;
+    user-select: none;
 }
 
 body > section {
