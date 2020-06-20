@@ -3,6 +3,9 @@ const app = express();
 const http = require('http').createServer(app);
 const io = require('socket.io')(http);
 
+const RequestHandler = require('./controller/RequestHandler');
+const reqHandler = new RequestHandler();
+
 app.use(express.static('public'));
 app.use(express.static('public/font'));
 app.use(express.static('public/style'));
