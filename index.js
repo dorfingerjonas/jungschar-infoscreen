@@ -23,7 +23,11 @@ io.on('connection', (socket) => {
     });
 
     socket.on('request time', () => {
-        socket.emit('time', reqHandler.getTime())
+        socket.emit('time', reqHandler.getTime());
+    });
+
+    socket.on('request weather', async () => {
+        socket.emit('weather', await reqHandler.getWeather());
     });
 });
 
