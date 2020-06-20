@@ -61,3 +61,17 @@
 #weatherBox img {
     width: 60%;
 }
+
+/* LogoBox */
+#logoBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+#logoBox img {
+    width: 70%;
+    border-radius: 3px;
+    transition: opacity 300ms ease-in-out;
+}
