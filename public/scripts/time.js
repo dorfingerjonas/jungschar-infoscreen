@@ -1,10 +1,10 @@
 window.addEventListener('load', () => {
     const parent = document.getElementById('timeBox');
-    const socket = io();
+    const socket = getSocket();
 
     socket.emit('request time', null);
 
-    socket.on('time', (timestamp) => {
+    socket.on('time', timestamp => {
         removeAllChildren(parent);
         const time = new Date(timestamp);
         const timeText = document.createElement('span');
