@@ -29,6 +29,10 @@ io.on('connection', (socket) => {
     socket.on('request weather', async () => {
         socket.emit('weather', await reqHandler.getWeather());
     });
+
+    socket.on('request logos', () => {
+        reqHandler.getLogos().then(res => {socket.emit('logos', res); });
+    });
 });
 
 http.listen(3000, () => {
