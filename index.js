@@ -20,6 +20,10 @@ io.on('connection', (socket) => {
     socket.on('disconnect', () => {
         console.log('user disconnected');
     });
+
+    socket.on('request time', () => {
+        socket.emit('time', reqHandler.getTime())
+    });
 });
 
 http.listen(3000, () => {
