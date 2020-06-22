@@ -24,7 +24,11 @@ class NewsRepository {
     }
 
     delete(news) {
-
+        fs.writeFile('./data/news.json', JSON.stringify(this.getAll().filter(r => r.id !== news.id)), err => {
+            if (err) {
+                console.error(err);
+            }
+        });
     }
 
     deleteAll() {
