@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const http = require('http').createServer(app);
 const io = require('socket.io')(http);
+const schedule = require('node-schedule');
 
 const RequestHandler = require('./controller/RequestHandler');
 const reqHandler = new RequestHandler();
@@ -27,6 +28,10 @@ io.on('connection', (socket) => {
     });
 
     socket.on('request weather', async () => {
+        schedule.scheduleJob("*/10 * * * *", async () => {
+            socket.emit('weather', await reqHandler.getWeather());
+        });
+
         socket.emit('weather', await reqHandler.getWeather());
     });
 
