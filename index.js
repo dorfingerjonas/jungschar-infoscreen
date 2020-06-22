@@ -42,6 +42,10 @@ io.on('connection', (socket) => {
     socket.on('request videos', () => {
         reqHandler.getVideos().then(res => {socket.emit('videos', res); });
     });
+
+    socket.on('request news', () => {
+        reqHandler.getNews().then(res => {socket.emit('news', res); });
+    });
 });
 
 http.listen(3000, () => {
