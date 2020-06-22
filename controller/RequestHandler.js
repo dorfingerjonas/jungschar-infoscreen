@@ -27,6 +27,19 @@ class RequestHandler {
 
         return response;
     }
+
+    async getVideos() {
+        const files = await promisify(fs.readdir)('./public/media/video')
+        const response = [];
+
+        for (const file of files) {
+            if (file.endsWith('.mp4')) {
+                response.push(file);
+            }
+        }
+
+        return response;
+    }
 }
 
 module.exports = RequestHandler;
