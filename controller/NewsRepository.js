@@ -42,14 +42,14 @@ class NewsRepository {
         });
     }
 
-    async getAll() {
+    getAll() {
         const newsList = require('../data/news.json');
         const response = [];
 
         for (const news of newsList) {
             const newNews = new News(news.headline, news.content);
-            newNews.setId(news.id);
-            newNews.setVisibility(news.isVisible);
+            newNews.id = news.id;
+            newNews.isVisible = news.isVisible;
 
             response.push(newNews);
         }
