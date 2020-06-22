@@ -37,7 +37,7 @@ class NewsRepository {
     deleteAll() {
         fs.writeFile('./data/news.json', JSON.stringify([]), err => {
             if (err) {
-                console.error(err)
+                console.error(err);
             }
         });
     }
