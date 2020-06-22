@@ -4,8 +4,8 @@ const News = require('../model/News');
 class NewsRepository {
     add(news) {
         const currentFile = require('../data/news.json');
-        
-        currentFile.push(JSON.parse(news));
+
+        currentFile.push(news);
 
         fs.writeFile('./data/news.json', JSON.stringify(currentFile), err => {
             if (err) {
