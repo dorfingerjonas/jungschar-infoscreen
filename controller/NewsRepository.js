@@ -16,6 +16,11 @@ class NewsRepository {
 
     update(news) {
 
+        newsList[newsList.findIndex(r => r.id === news.id)] = news;
+
+        fs.writeFile('./data/news.json', JSON.stringify(newsList), err => {
+            if (err) {
+                console.error(err);
     }
 
     delete(news) {
