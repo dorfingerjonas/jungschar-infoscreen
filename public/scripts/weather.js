@@ -11,8 +11,8 @@ window.addEventListener('load', () => {
         const overviewWrapper = document.createElement('div');
 
         const weatherData = [
-            {name: 'min. Temperatur', value: `${data.main.temp_min}°C`},
-            {name: 'max. Temperatur', value: `${data.main.temp_max}°C`},
+            {name: 'min. Temperatur', value: `${Math.round(data.main.temp_min)}°C`},
+            {name: 'max. Temperatur', value: `${Math.round(data.main.temp_max)}°C`},
             {name: 'Windgeschwindigkeit', value: `${data.wind.speed}km/h`},
             {name: 'Luftdruck', value: `${data.main.pressure}hPa`},
             {name: 'Luftfeuchtigkeit', value: `${data.main.humidity}%`}
