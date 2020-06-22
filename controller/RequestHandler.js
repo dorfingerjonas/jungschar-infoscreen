@@ -1,6 +1,7 @@
 const fs = require('fs');
 const { promisify } = require('util');
 const fetch = require('node-fetch');
+const NewsRepository = require('./NewsRepository');
 
 class RequestHandler {
     getTime() {
@@ -39,6 +40,10 @@ class RequestHandler {
         }
 
         return response;
+    }
+
+    getNews() {
+        return new NewsRepository().getAll();
     }
 }
 
