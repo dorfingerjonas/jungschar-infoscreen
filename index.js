@@ -33,6 +33,10 @@ io.on('connection', (socket) => {
     socket.on('request logos', () => {
         reqHandler.getLogos().then(res => {socket.emit('logos', res); });
     });
+
+    socket.on('request videos', () => {
+        reqHandler.getVideos().then(res => {socket.emit('videos', res); });
+    });
 });
 
 http.listen(3000, () => {
