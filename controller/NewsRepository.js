@@ -21,7 +21,15 @@ class NewsRepository {
 
     }
 
-    getAll() {
+    deleteAll() {
+        fs.writeFile('./data/news.json', JSON.stringify([]), err => {
+            if (err) {
+                console.error(err)
+            }
+        });
+    }
+
+    async getAll() {
         const newsList = require('../data/news.json');
         const response = [];
 
