@@ -3,7 +3,8 @@ const News = require('../model/News');
 
 class NewsRepository {
     add(news) {
-
+        const currentFile = require('../data/news.json');
+        
         currentFile.push(news.json());
 
         fs.writeFile('./data/news.json', JSON.stringify(currentFile), err => {
@@ -34,7 +35,7 @@ class NewsRepository {
         const response = [];
 
         for (const news of newsList) {
-            const newNews = new News(news.headline, news.content)
+            const newNews = new News(news.headline, news.content);
             newNews.setId(news.id);
             newNews.setVisibility(news.isVisible);
 
