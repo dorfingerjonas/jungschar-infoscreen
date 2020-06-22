@@ -8,14 +8,14 @@ body > section {
     position: fixed;
 }
 
-#main, #bottomBar, .sidebox {
+#video, #bottomBar, .sidebox {
     border-radius: 3px;
     box-shadow: 1px 1px 9px 0px #dbdbdb;
 }
 
-/* Main */
+/* Video */
 
-#main {
+#video {
     width: 66vw;
     height: 65vh;
     top: 1vh;
