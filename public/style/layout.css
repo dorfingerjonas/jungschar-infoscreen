@@ -8,7 +8,7 @@ body > section {
     position: fixed;
 }
 
-#video, #bottomBar, .sidebox {
+#video, #news, .sidebox {
     border-radius: 3px;
     box-shadow: 1px 1px 9px 0px #dbdbdb;
 }
@@ -24,7 +24,7 @@ body > section {
 
 /* Bottombar */
 
-#bottomBar {
+#news {
     width: 66vw;
     height: 32vh;
     bottom: 1vh;
