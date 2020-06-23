@@ -1,7 +1,6 @@
 window.addEventListener('click', () => {
     const parent = document.getElementById('video');
     const socket = getSocket();
-    let playingVideo;
 
     socket.emit('request videos', null);    
 
@@ -24,40 +23,51 @@ window.addEventListener('click', () => {
                     video.classList.add('hide');
                 } else {
                     video.play();
-                    playingVideo = video;
                 }
 
                 parent.appendChild(video);
             }
 
             setTimeout(() => {
-                setTimeout(() => {
-                    next();
-                }, playingVideo.duration * 1000 + 100);
+                if (parent.children[0] == NaN) {
+                    setTimeout(() => {
+                        setTimeout(() => {
+                            next();
+                        }, parent.children[0].duration * 1000);
+                    }, 20);
+                } else {
+                    setTimeout(() => {
+                        next();
+                    }, parent.children[0].duration * 1000);
+                }
             }, 60);
         }
 
         function next() {
             const videos = parent.children;
-            let index = -1;
+            let rack = videos[0].src;
 
-            for (let i = 0; i < videos.length; i++) {
-                if (!videos[i].className.includes('hide')) {
-                    index = i;
-                }
+            for (let i = 0; i < videos.length - 1; i++) {
+                videos[i].src = videos[i + 1].src;
+            }            
 
-                videos[i].classList.add('hide');
-            }
-
-            index === videos.length - 1 ? index = 0 : index++;
-
-            videos[index].classList.remove('hide');
-            videos[index].play();
-            playingVideo = videos[index];
+            videos[videos.length - 1].src = rack;
+            
+            videos[0].play();
 
             setTimeout(() => {
-                next();
-            }, videos[index].duration * 1000 + 500);
+                if (videos[0].duration === NaN) {
+                    setTimeout(() => {
+                        setTimeout(() => {
+                            next();
+                        }, videos[0].duration * 1000);
+                    }, 20);
+                } else {
+                    setTimeout(() => {
+                        next();
+                    }, videos[0].duration * 1000 + 40);
+                }
+            }, 60);
         }
     });
 });
