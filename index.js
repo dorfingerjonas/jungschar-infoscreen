@@ -50,6 +50,10 @@ io.on('connection', (socket) => {
     socket.on('request jobs', () => {
         socket.emit('jobs', reqHandler.getJobs());
     });
+
+    socket.on('request mode change', data => {
+        io.emit('mode', data);
+    });
 });
 
 http.listen(3000, () => {
