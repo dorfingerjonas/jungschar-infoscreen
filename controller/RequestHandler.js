@@ -50,6 +50,10 @@ class RequestHandler {
     getJobs() {
         return new JobRepository().getAll();
     }
+
+    async getUserSvg() {
+        return await promisify(fs.readFile)('./public/icons/user.svg', 'utf8');
+    }
 }
 
 module.exports = RequestHandler;
