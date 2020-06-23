@@ -1,0 +1,52 @@
+#jobScreen {
+    height: 100vh;
+    padding-top: 3vh;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    overflow-y: scroll;
+}
+
+#jobScreen .job {
+    width: 15vw;
+    padding: 1.5vh 1.5vw;
+    border-radius: 5px;
+    box-shadow: 1px 1px 9px 0px #dbdbdb;
+    transition: opacity 400ms ease-in-out;
+}
+
+#jobScreen .job h2 {
+    text-align: center;
+    margin: 0;
+    font-size: 1.2vw;
+}
+
+#jobScreen .job p {
+    margin: 3vh 0;
+    font-size: .8vw;
+}
+
+#jobScreen .job .userWrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+}
+
+#jobScreen .job .userWrapper svg {
+    width: 1.8vw;
+}
+
+.selectedWorkplace {
+    fill: #dc5656 !important;
+}
+
+.jobFull {
+    opacity: .5;
+}
+
+#jobScreen .job .userWrapper svg path {
+    fill: #42b983;
+    transition: fill 400ms ease-in-out;
+}
