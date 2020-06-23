@@ -54,6 +54,14 @@ io.on('connection', (socket) => {
     socket.on('request mode change', data => {
         io.emit('mode', data);
     });
+
+    socket.on('request user svg', async () => {
+        socket.emit('user svg', await reqHandler.getUserSvg());
+    });
+
+    socket.on('request currency', () => {
+        socket.emit('currency', reqHandler.getCurrency());
+    });
 });
 
 http.listen(3000, () => {
