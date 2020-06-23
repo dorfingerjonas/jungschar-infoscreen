@@ -41,7 +41,7 @@ window.addEventListener('load', () => {
                         i = parent.children.length;
                     }
                 }
-            }, 5000);
+            }, 10000);
         }
     });
 });
