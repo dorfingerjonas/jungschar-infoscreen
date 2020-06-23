@@ -17,14 +17,18 @@
     <script src="/socket.io/socket.io.js"></script>
 </head>
 <body>
-    <section id="sidebar">
-        <div class="sidebox" id="timeBox"></div>
-        <div class="sidebox" id="weatherBox"></div>
-        <div class="sidebox" id="logoBox"></div>
-    </section>
+    <main id="mainScreen">
+        <section id="sidebar">
+            <div class="sidebox" id="timeBox"></div>
+            <div class="sidebox" id="weatherBox"></div>
+            <div class="sidebox" id="logoBox"></div>
+        </section>
+    
+        <section id="video"></section>
+    
+        <section id="news"></section>
+    </main>
 
-    <section id="video"></section>
-
-    <section id="news"></section>
+    <div id="jobScreen" class="hide"></div>
 </body>
 </html>
