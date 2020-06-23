@@ -4,8 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jungscharlager Infoscreen</title>
+    <script src="./main.js"></script>
+    <script src="./nav.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="mainContent.css">
+    <link rel="stylesheet" href="nav.css">
 </head>
 <body>
-    
+    <nav>
+        <span id="navDashboard">Dashboard</span>
+        <span id="navManageJobs">Job Verteilung</span>
+        <span id="navEditNews">News bearbeiten</span>
+        <span id="navEditJobs">Jobs bearbeiten</span>
+        <span id="navMediaContent">Medieninhalte verwalten</span>
+    </nav>
+
+    <div id="currentPageBar"></div>
+
+    <main id="mainContent">
+        <section id="dashboard">
+            <h1>Dashboard</h1>
+        </section>
+
+        <section id="manageJobs" class="hide">
+            <h1>Job Verteilung</h1>
+        </section>
+
+        <section id="editNews" class="hide">
+            <h1>News bearbeiten</h1>
+        </section>
+
+        <section id="editJobs" class="hide">
+            <h1>Jobs bearbeiten</h1>
+        </section>
+
+        <section id="mediaContent" class="hide">
+            <h1>Medieninhalte verwalten</h1>
+        </section>
+
+    </main>
 </body>
 </html>
