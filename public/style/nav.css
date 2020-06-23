@@ -1,0 +1,36 @@
+nav {
+    width: 50%;
+    height: 5vh;
+    font-size: .7vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+}
+
+nav span {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background 200ms ease-in-out;
+}
+
+nav span:active {
+    background: lightgray;
+}
+
+#currentPageBar {
+    width: 10vw;
+    height: .5vh;
+    background: #42b983;
+    position: absolute;
+    top: 4.5vh;
+    left: 0;
+    border-radius: 2px;
+    box-shadow: 1px 1px 9px 0px #dbdbdb;
+    transition: left 300ms ease-in-out;
+}
