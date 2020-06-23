@@ -12,6 +12,10 @@ window.addEventListener('load', () => {
             img.src = `../media/img/logos/${files[0]}`;
             
             parent.appendChild(img);
+
+            setTimeout(() => {
+                resizeImage(img);
+            }, 30);
         } else if (files.length >= 2) {
             for (let i = 0; i < files.length; i++) {
                 const img = document.createElement('img');
@@ -20,6 +24,10 @@ window.addEventListener('load', () => {
                 if (i !== 0) img.classList.add('hide');
                 
                 parent.appendChild(img);
+
+                setTimeout(() => {
+                    resizeImage(img);
+                }, 30);
             }
             
             setInterval(() => {
@@ -37,11 +45,7 @@ window.addEventListener('load', () => {
                     images[0].src = rack;
 
                     setTimeout(() => {
-                        if (images[0].clientHeight > images[0].clientWidth || images[0].clientHeight === images[0].clientWidth) {
-                            images[0].style.width = '40%';
-                        } else {
-                            images[0].style.width = '';
-                        }
+                        resizeImage(images[0]);
 
                         setTimeout(() => {
                             images[0].style.opacity = 1;
@@ -52,3 +56,13 @@ window.addEventListener('load', () => {
         }
     });
 });
+
+function resizeImage(img) {
+    if (img.clientHeight > img.clientWidth
+        || img.clientHeight + 50 > img.clientWidth && img.clientHeight - 50 < img.clientWidth
+        || img.clientHeight === img.clientWidth) {
+        img.style.width = '40%';
+    } else {
+        img.style.width = '';
+    }
+}
