@@ -44,7 +44,7 @@ io.on('connection', (socket) => {
     });
 
     socket.on('request news', () => {
-        reqHandler.getNews().then(res => {socket.emit('news', res); });
+        socket.emit('news', reqHandler.getNews());
     });
 });
 
