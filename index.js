@@ -46,6 +46,10 @@ io.on('connection', (socket) => {
     socket.on('request news', () => {
         socket.emit('news', reqHandler.getNews());
     });
+    
+    socket.on('request jobs', () => {
+        socket.emit('jobs', reqHandler.getJobs());
+    });
 });
 
 http.listen(3000, () => {
