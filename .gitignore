@@ -288,4 +288,7 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+# data files
+data/*.json
+
 # End of https://www.toptal.com/developers/gitignore/api/linux,windows,macos,node,jetbrains,visualstudiocode
