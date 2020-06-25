@@ -12,7 +12,7 @@ window.addEventListener('load', () => {
         const element = elements[i];
         
         element.nav.addEventListener('click', () => {
-            currentPageBar.style.left = `${i * 10}vw`;
+            currentPageBar.style.left = `${i * 14}vw`;
             hideAll();
             element.screen.classList.remove('hide');
         });
