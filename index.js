@@ -62,6 +62,34 @@ io.on('connection', (socket) => {
     socket.on('request currency', () => {
         socket.emit('currency', reqHandler.getCurrency());
     });
+
+    socket.on('get all news', async () => {
+        socket.emit('all news', await reqHandler.getNews());
+    });
+
+    socket.on('request check svg', async () => {
+        socket.emit('check svg', await reqHandler.getCheckSvg());
+    });
+
+    socket.on('request cross svg', async () => {
+        socket.emit('cross svg', await reqHandler.getCrossSvg());
+    });
+
+    socket.on('update news', news => {        
+        newsRepo.update(news);
+    });
+    
+    socket.on('delete news', news => {        
+        newsRepo.delete(news);
+    });
+
+    socket.on('news delete all', () => {
+        newsRepo.deleteAll();
+    });
+
+    socket.on('add news', news => {
+        newsRepo.add(news);
+    })
 });
 
 http.listen(3000, () => {
