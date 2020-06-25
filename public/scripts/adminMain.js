@@ -36,7 +36,7 @@ function showFeedbackMessage(success, headline) {
     document.getElementById('feedbackText').textContent = headline;
 
     setTimeout(() => {
-        document.getElementById('feedback').style.right = '-15vw';
+        document.getElementById('feedback').style.right = '-26vw';
     }, 3000);
 }
 
