@@ -43,12 +43,12 @@ class RequestHandler {
         return response;
     }
 
-    getNews() {
-        return new NewsRepository().getAll();
+    async getNews() {
+        return await new NewsRepository().getAll();
     }
 
-    getJobs() {
-        return new JobRepository().getAll();
+    async getJobs() {
+        return await new JobRepository().getAll();
     }
 
     async getUserSvg() {
