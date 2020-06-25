@@ -58,6 +58,14 @@ class RequestHandler {
     getCurrency() {
         return require('../data/currency.json');
     }
+
+    async getCheckSvg() {
+        return await promisify(fs.readFile)('./public/icons/check.svg', 'utf8');
+    }
+
+    async getCrossSvg() {
+        return await promisify(fs.readFile)('./public/icons/cross.svg', 'utf8');
+    }
 }
 
 module.exports = RequestHandler;
