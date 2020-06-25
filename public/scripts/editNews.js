@@ -2,10 +2,6 @@ window.addEventListener('load', () => {
     const parent = document.getElementById('newsWrapper');
     const socket = getSocket();
 
-    setTimeout(() => {
-        document.getElementById('navEditNews').click();
-    }, 250);
-
     socket.emit('get all news', null);
 
     socket.on('all news', data => {
