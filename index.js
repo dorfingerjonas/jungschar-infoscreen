@@ -5,6 +5,8 @@ const io = require('socket.io')(http);
 const schedule = require('node-schedule');
 
 const RequestHandler = require('./controller/RequestHandler');
+const NewsRepository = require('./controller/NewsRepository');
+const newsRepo = new NewsRepository();
 const reqHandler = new RequestHandler();
 
 app.use(express.static('public'));
