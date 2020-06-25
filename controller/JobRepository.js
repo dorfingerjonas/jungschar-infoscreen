@@ -2,8 +2,8 @@ const fs = require('fs');
 const Job = require('../model/Job');
 
 class JobRepository {
-    add(job) {
-        const currentFile = require('../data/jobs.json');
+   async add(job) {
+        const currentFile = await this.getAll();
 
         currentFile.push(job);
 
@@ -14,8 +14,8 @@ class JobRepository {
         });
     }
 
-    update(job) {
-        const jobList = this.getAll();
+    async update(job) {
+        const jobList = await this.getAll();
         
         jobList[jobList.findIndex(r => r.id === job.id)] = job;
 
@@ -26,8 +26,10 @@ class JobRepository {
         });
     }
 
-    delete(job) {
-        fs.writeFile('./data/jobs.json', JSON.stringify(this.getAll().filter(r => r.id !== job.id)), err => {
+    async delete(job) {
+        const currentFile = await this.getAll();
+
+        fs.writeFile('./data/jobs.json', JSON.stringify(currentFile.filter(r => r.id !== job.id)), err => {
             if (err) {
                 console.error(err);
             }
@@ -42,19 +44,8 @@ class JobRepository {
         });
     }
 
-    getAll() {
-        const jobList = require('../data/jobs.json');
-        const response = [];
-
-        for (const job of jobList) {
-            const newJob = new Job(job.name, job.salary, job.amount, job.morning, job.afternoon);
-            newJob.id = job.id;
-            newJob.visible = job.visible;
-
-            response.push(newJob);
-        }
-
-        return response;
+    async getAll() {
+        return JSON.parse(await promisify(fs.readFile)('./data/jobs.json', 'utf8'));
     }
 }
 

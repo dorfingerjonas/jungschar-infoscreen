@@ -1,9 +1,9 @@
 const fs = require('fs');
-const News = require('../model/News');
+const { promisify } = require('util');
 
 class NewsRepository {
-    add(news) {
-        const currentFile = require('../data/news.json');
+    async add(news) {
+        const currentFile = await this.getAll();
 
         currentFile.push(news);
 
@@ -14,8 +14,8 @@ class NewsRepository {
         });
     }
 
-    update(news) {
-        const newsList = this.getAll();
+    async update(news) {
+        const newsList = await this.getAll();
         
         newsList[newsList.findIndex(r => r.id === news.id)] = news;
 
@@ -26,8 +26,10 @@ class NewsRepository {
         });
     }
 
-    delete(news) {
-        fs.writeFile('./data/news.json', JSON.stringify(this.getAll().filter(r => r.id !== news.id)), err => {
+    async delete(news) {
+        const currentFile = await this.getAll();
+        
+        fs.writeFile('./data/news.json', JSON.stringify(currentFile.filter(r => r.id !== news.id)), err => {
             if (err) {
                 console.error(err);
             }
@@ -42,19 +44,8 @@ class NewsRepository {
         });
     }
 
-    getAll() {
-        const newsList = require('../data/news.json');
-        const response = [];
-
-        for (const news of newsList) {
-            const newNews = new News(news.headline, news.content);
-            newNews.id = news.id;
-            newNews.isVisible = news.isVisible;
-
-            response.push(newNews);
-        }
-
-        return response;
+    async getAll() {
+        return JSON.parse(await promisify(fs.readFile)('./data/news.json', 'utf8'));
     }
 }
 
