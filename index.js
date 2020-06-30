@@ -6,7 +6,9 @@ const schedule = require('node-schedule');
 
 const RequestHandler = require('./controller/RequestHandler');
 const NewsRepository = require('./controller/NewsRepository');
+const JobRepository = require('./controller/JobRepository');
 const newsRepo = new NewsRepository();
+const jobRepo = new JobRepository();
 const reqHandler = new RequestHandler();
 
 app.use(express.static('public'));
@@ -77,11 +79,11 @@ io.on('connection', (socket) => {
         socket.emit('cross svg', await reqHandler.getCrossSvg());
     });
 
-    socket.on('update news', news => {        
+    socket.on('update news', news => {
         newsRepo.update(news);
     });
     
-    socket.on('delete news', news => {        
+    socket.on('delete news', news => {
         newsRepo.delete(news);
     });
 
@@ -91,7 +93,27 @@ io.on('connection', (socket) => {
 
     socket.on('add news', news => {
         newsRepo.add(news);
-    })
+    });
+
+    socket.on('get all jobs', async () => {
+        socket.emit('all jobs', await reqHandler.getJobs());
+    });
+
+    socket.on('update job', job => {
+        jobRepo.update(job);
+    });
+    
+    socket.on('delete job', job => {
+        jobRepo.delete(job);
+    });
+
+    socket.on('job delete all', () => {
+        jobRepo.deleteAll();
+    });
+
+    socket.on('add job', job => {
+        jobRepo.add(job);
+    });
 });
 
 http.listen(3000, () => {
