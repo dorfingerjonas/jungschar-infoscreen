@@ -1,5 +1,5 @@
 const fs = require('fs');
-const Job = require('../model/Job');
+const { promisify } = require('util');
 
 class JobRepository {
    async add(job) {
