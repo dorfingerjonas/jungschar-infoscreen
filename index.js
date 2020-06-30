@@ -47,8 +47,8 @@ io.on('connection', (socket) => {
         reqHandler.getVideos().then(res => {socket.emit('videos', res); });
     });
 
-    socket.on('request news', () => {
-        socket.emit('news', reqHandler.getNews());
+    socket.on('request news', async () => {
+        socket.emit('news', await reqHandler.getNews());
     });
     
     socket.on('request jobs', async () => {
