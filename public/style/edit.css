@@ -1,15 +1,15 @@
-#editNews {
+#editNews, #editJobs {
     display: flex;
     justify-content: center;
     align-items: flex-start;
 }
 
-#newsWrapper {
+#newsWrapper, #jobWrapper {
     width: 70vw;
     transition: opacity 300ms ease-in-out;
 }
 
-.news {
+.news, .job {
     width: 100%;
     margin: 2vh 0 4vh 0;
     padding: 1vh 1vw;
@@ -54,20 +54,20 @@
     background: #dc5656;
 }
 
-.news input, .news textarea {
+.news input, .news textarea, .job input, .job textarea {
     width: 100%;
     margin: 1vh 0;
     padding: 1vh .4vw;
     background: transparent;
     font-family: 'Roboto', sans-serif;
-    font-size: 1.1vw;
+    font-size: 1.2vw;
     border: none;
     outline: none;
     border-bottom: 2px solid transparent;
     transition: border-color 250ms ease-in-out;
 }
 
-.news textarea {
+.news textarea, .job textarea {
     height: 10vh;
     resize: none;
     font-size: 1vw;
@@ -88,6 +88,55 @@
     cursor: not-allowed !important;
 }
 
+.changeNumberWrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.changeNumberWrapper > div, .changeSalary, .changeAmount {
+    width: 50%;
+    margin: .5vh 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+
+.changeSalary, .changeAmount {
+    width: 70%;
+}
+
+.changeNumberWrapper > div label, .changeSalary label, .changeAmount label {
+    width: 40%;
+}
+
+.changeNumberWrapper div div, .changeSalary div, .changeAmount div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.changeNumberWrapper div div span, .changeSalary div span, .changeAmount div span {
+    width: 1vw;
+    height: 1vw;
+    margin: 0 .4vw;
+    padding: 0.4vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1vw;
+    background: #009bab;
+    color: #fff;
+    border-radius: 100%;
+    box-shadow: 1px 1px 9px 0px #dbdbdb;
+    cursor: pointer;
+    user-select: none;
+}
+
 .checkBoxWrapper {
     width: 100%;
     display: flex;
@@ -103,7 +152,7 @@ input[type="checkbox"] {
     border-color: transparent !important;
 }
 
-.newsShortCutBar {
+.newsShortCutBar, .jobShortCutBar {
     width: 100%;
     margin-top: 3vh;
     display: flex;
@@ -112,7 +161,7 @@ input[type="checkbox"] {
     flex-direction: row;
 }
 
-.newsShortCutButton {
+.newsShortCutButton, .jobShortCutButton {
     background: #009bab;
     color: #fff;
     padding: 1vh .5vw;
@@ -122,7 +171,7 @@ input[type="checkbox"] {
     user-select: none;
 }
 
-#createNewsWindow {
+#createNewsWindow, #createJobWindow {
     width: 36vw;
     height: 50vh;
     padding-bottom: 2vh;
@@ -142,7 +191,7 @@ input[type="checkbox"] {
     z-index: 101;
 }
 
-#createNewsWindow input[type="text"], #createNewsWindow textarea {
+#createNewsWindow input[type="text"], #createNewsWindow textarea, #createJobWindow input[type="text"], #createJobWindow textarea {
     width: 70%;
     padding: 1vh .5vw;
     border: none;
@@ -155,11 +204,11 @@ input[type="checkbox"] {
     transition: border-color 250ms ease-in-out;
 }
 
-#createNewsWindow textarea {
+#createNewsWindow textarea, #createJobWindow textarea {
     height: 10vh;
 }
 
-#createNewsWindow input[type="text"]:focus, #createNewsWindow textarea:focus {
+#createNewsWindow input[type="text"]:focus, #createNewsWindow textarea:focus, #createJobWindow input[type="text"]:focus, #createJobWindow textarea:focus {
     border-color: #009bab;
 }
 
