@@ -200,7 +200,8 @@ window.addEventListener('load', () => {
         });
 
         refreshPresentationNews.addEventListener('click', () => {
-            showFeedbackMessage(false, 'nicht implementiert');
+            socket.emit('request news', null);
+            showFeedbackMessage(true, 'Präsentation aktualisert');
         });
 
         createNews.addEventListener('click', () => {
