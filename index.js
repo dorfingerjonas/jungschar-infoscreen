@@ -52,7 +52,7 @@ io.on('connection', (socket) => {
     });
     
     socket.on('request jobs', async () => {
-        socket.emit('jobs', await reqHandler.getJobs());
+        io.emit('jobs', await reqHandler.getJobs());
     });
 
     socket.on('request mode change', data => {
