@@ -48,7 +48,7 @@ io.on('connection', (socket) => {
     });
 
     socket.on('request news', async () => {
-        socket.emit('news', await reqHandler.getNews());
+        io.emit('news', await reqHandler.getNews());
     });
     
     socket.on('request jobs', async () => {
