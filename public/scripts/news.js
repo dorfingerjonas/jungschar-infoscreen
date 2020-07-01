@@ -1,11 +1,13 @@
 window.addEventListener('load', () => {
     const parent = document.getElementById('news');
     const socket = getSocket();
+    let interval;
 
     socket.emit('request news', null);
 
     socket.on('news', data => {
         removeAllChildren(parent);
+        clearInterval(interval);
 
         if (data.length === 1) {
             if (data[0].isVisible) {
@@ -28,7 +30,7 @@ window.addEventListener('load', () => {
                 }
             }
 
-            setInterval(() => {
+            interval = setInterval(() => {
                 for (let i = 0; i < parent.children.length; i++) {
                     const news = parent.children[i];
                     
