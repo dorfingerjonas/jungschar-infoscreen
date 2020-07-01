@@ -65,8 +65,8 @@ window.addEventListener('load', () => {
 
         changeSalary.appendChild(salLabel);
         changeSalary.appendChild(salary);
-        salIconWrapper.appendChild(salPlusIcon);
         salIconWrapper.appendChild(salMinusIcon);
+        salIconWrapper.appendChild(salPlusIcon);
         changeSalary.appendChild(salIconWrapper);
         changeNumberWrapper.appendChild(changeSalary);
         
@@ -95,8 +95,8 @@ window.addEventListener('load', () => {
 
         changeAmount.appendChild(amLabel);
         changeAmount.appendChild(amount);
-        amIconWrapper.appendChild(amPlusIcon);
         amIconWrapper.appendChild(amMinusIcon);
+        amIconWrapper.appendChild(amPlusIcon);
         changeAmount.appendChild(amIconWrapper);
         changeNumberWrapper.appendChild(changeAmount);
              
@@ -271,7 +271,8 @@ window.addEventListener('load', () => {
         });
 
         refreshPresentationJob.addEventListener('click', () => {
-            showFeedbackMessage(false, 'nicht implementiert');
+            socket.emit('request jobs', null);
+            showFeedbackMessage(true, 'Präsentation aktualisiert');
         });
 
         createJob.addEventListener('click', () => {
@@ -353,8 +354,8 @@ window.addEventListener('load', () => {
 
         changeSalary.appendChild(salLabel);
         changeSalary.appendChild(salary);
-        salIconWrapper.appendChild(salPlusIcon);
         salIconWrapper.appendChild(salMinusIcon);
+        salIconWrapper.appendChild(salPlusIcon);
         changeSalary.appendChild(salIconWrapper);
         
         const amIconWrapper = document.createElement('div');
@@ -379,8 +380,8 @@ window.addEventListener('load', () => {
 
         changeAmount.appendChild(amLabel);
         changeAmount.appendChild(amount);
-        amIconWrapper.appendChild(amPlusIcon);
         amIconWrapper.appendChild(amMinusIcon);
+        amIconWrapper.appendChild(amPlusIcon);
         changeAmount.appendChild(amIconWrapper);
 
         createButton.addEventListener('click', () => {
