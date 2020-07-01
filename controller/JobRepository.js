@@ -5,6 +5,8 @@ class JobRepository {
    async add(job) {
         const currentFile = await this.getAll();
 
+        job.id = Date.now();
+
         currentFile.push(job);
 
         fs.writeFile('./data/jobs.json', JSON.stringify(currentFile), err => {
