@@ -20,15 +20,14 @@ window.addEventListener('load', () => {
                 if (data[i].isVisible) {
                     const news = createNews(data[i]);
                     
-                    if (i !== 0) {
-                        news.classList.add('hide');
-                    } else {
-                        news.style.top = 0;
-                    }
+                    news.classList.add('hide');
 
                     parent.appendChild(news);
                 }
             }
+            
+            parent.children[0].classList.remove('hide');
+            parent.children[0].style.top = 0;
 
             interval = setInterval(() => {
                 for (let i = 0; i < parent.children.length; i++) {
