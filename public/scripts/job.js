@@ -12,8 +12,16 @@ window.addEventListener('load', () => {
         currency = data.name;
     });
 
+    socket.on('select workplace', job => {
+        selectWorkplace(job.id);
+    });
+    
+    socket.on('deselect workplace', job => {
+        deselectWorkplace(job.id);
+    });
+
     socket.on('jobs', data => {
-        if (!icon) {            
+        if (!icon) {
             socket.on('user svg', svg => {
                 icon = svg;
                 printJobs(data, svg);
