@@ -114,6 +114,14 @@ io.on('connection', (socket) => {
     socket.on('add job', job => {
         jobRepo.add(job);
     });
+
+    socket.on('select job', job => {
+        io.emit('select workplace', job);
+    });
+
+    socket.on('deselect job', job => {
+        io.emit('deselect workplace', job);
+    });
 });
 
 http.listen(3000, () => {
