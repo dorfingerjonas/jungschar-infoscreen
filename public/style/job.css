@@ -8,7 +8,16 @@
     overflow-y: scroll;
 }
 
-#jobScreen .job {
+#manageJobs {
+    padding-top: 3vh;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    overflow-y: scroll;
+}
+
+#jobScreen .job, #manageJobs .job {
     width: 15vw;
     padding: 1.5vh 1.5vw;
     border-radius: 5px;
@@ -16,25 +25,37 @@
     transition: opacity 400ms ease-in-out;
 }
 
-#jobScreen .job h2 {
+#manageJobs .job {
+    flex-direction: column;
+}
+
+#jobScreen .job h2, #manageJobs .job h2 {
     text-align: center;
     margin: 0;
     font-size: 1.2vw;
 }
 
-#jobScreen .job p {
+#jobScreen .job p, #manageJobs .job p {
     margin: 3vh 0;
     font-size: .8vw;
 }
 
-#jobScreen .job .userWrapper {
+#manageJobs .job p {
+    font-size: 1vw;
+}
+
+#jobScreen .job .userWrapper, #manageJobs .job .userWrapper {
     display: flex;
     justify-content: space-around;
     align-items: center;
     flex-direction: row;
 }
 
-#jobScreen .job .userWrapper svg {
+#manageJobs .job .userWrapper {
+    width: 70%;
+}
+
+#jobScreen .job .userWrapper svg, #manageJobs .job .userWrapper svg {
     width: 1.8vw;
 }
 
@@ -46,7 +67,7 @@
     opacity: .5;
 }
 
-#jobScreen .job .userWrapper svg path {
+#jobScreen .job .userWrapper svg path, #manageJobs .job .userWrapper svg path {
     fill: #42b983;
     transition: fill 400ms ease-in-out;
 }
