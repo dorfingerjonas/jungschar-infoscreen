@@ -9,8 +9,8 @@
     transition: opacity 300ms ease-in-out;
 }
 
-.news, .job {
-    width: 100%;
+.news, .job, #currencyRow {
+    width: 97%;
     margin: 2vh 0 4vh 0;
     padding: 1vh 1vw;
     display: flex;
@@ -19,6 +19,11 @@
     flex-direction: row;
     border-radius: 5px;
     box-shadow: 1px 1px 9px 0px #dbdbdb;
+}
+
+#searchWrapper {
+    width: 40%;
+    margin-right: 60%;
 }
 
 .inputWrapper {
@@ -43,6 +48,7 @@
     background: #009bab;
     color: #fff;
     padding: 1vh .5vw;
+    font-size: 1vw;
     box-shadow: 1px 1px 9px 0px #dbdbdb;
     border-radius: 5px;
     cursor: pointer;
@@ -54,7 +60,11 @@
     background: #dc5656;
 }
 
-.news input, .news textarea, .job input, .job textarea {
+#currencyRow .buttonWrapper > div:nth-last-child(1) {
+    background: #009bab;
+}
+
+.news input, .news textarea, .inputWrapper input, .job textarea, #searchWrapper input {
     width: 100%;
     margin: 1vh 0;
     padding: 1vh .4vw;
@@ -67,19 +77,23 @@
     transition: border-color 250ms ease-in-out;
 }
 
+#searchWrapper input {
+    font-size: 1vw;
+}
+
 .news textarea, .job textarea {
     height: 10vh;
     resize: none;
     font-size: 1vw;
 }
 
-.active {
+.active, #searchWrapper input {
     box-shadow: 1px 1px 9px 0px #dbdbdb;
     border-radius: 5px;
     border-color: lightgray !important;
 }
 
-.active:focus {
+.active:focus, #searchWrapper input:focus {
     border-color: #009bab !important;
 }
 
@@ -99,6 +113,7 @@
 .changeNumberWrapper > div, .changeSalary, .changeAmount {
     width: 50%;
     margin: .5vh 0;
+    font-size: .8vw;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -137,22 +152,28 @@
     user-select: none;
 }
 
-.checkBoxWrapper {
+.checkBoxWrapper, #checkBoxWrapper {
     width: 100%;
+    font-size: .8vw;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     flex-direction: row;
 }
 
+#checkBoxWrapper {
+    width: 70%;
+}
+
 input[type="checkbox"] {
-    width: auto;
+    width: .6vw;
+    height: .6vw;
     margin-left: 1vw;
     box-shadow: none;
     border-color: transparent !important;
 }
 
-.newsShortCutBar, .jobShortCutBar {
+.newsShortCutBar, .jobShortCutBar .shortCutRow {
     width: 100%;
     margin-top: 3vh;
     display: flex;
@@ -164,6 +185,7 @@ input[type="checkbox"] {
 .newsShortCutButton, .jobShortCutButton {
     background: #009bab;
     color: #fff;
+    font-size: 1vw;
     padding: 1vh .5vw;
     box-shadow: 1px 1px 9px 0px #dbdbdb;
     border-radius: 5px;
@@ -191,8 +213,13 @@ input[type="checkbox"] {
     z-index: 101;
 }
 
+#createNewsWindow h2, #createJobWindow h2 {
+    font-size: 1.1vw;
+}
+
 #createNewsWindow input[type="text"], #createNewsWindow textarea, #createJobWindow input[type="text"], #createJobWindow textarea {
     width: 70%;
+    font-size: .7vw;
     padding: 1vh .5vw;
     border: none;
     border-radius: 3px;
@@ -212,14 +239,6 @@ input[type="checkbox"] {
     border-color: #009bab;
 }
 
-#checkBoxWrapper {
-    width: 70%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    flex-direction: row;
-}
-
 #buttonBar {
     width: 70%;
     display: flex;
@@ -231,6 +250,7 @@ input[type="checkbox"] {
 #buttonBar div {
     background: #009bab;
     color: #fff;
+    font-size: 1vw;
     padding: 1vh .5vw;
     box-shadow: 1px 1px 9px 0px #dbdbdb;
     border-radius: 5px;
@@ -238,7 +258,7 @@ input[type="checkbox"] {
     user-select: none;
 }
 
-#disableCreateWindow {
+#disableCreateWindow, #disableJobCreateWindow {
     width: 100vw;
     height: 100vh;
     position: fixed;    
