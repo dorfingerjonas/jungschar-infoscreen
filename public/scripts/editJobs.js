@@ -339,6 +339,101 @@ window.addEventListener('load', () => {
         row.appendChild(searchWrapper);
         document.getElementsByClassName('jobShortCutBar')[0].appendChild(row);
     }
+
+    function printCurrency() {
+        socket.emit('request currency', null);
+
+        socket.on('currency', currency => {
+            removeAllChildren('currencyRow');
+
+            const currencyWrapper = document.createElement('div');
+            const row = document.getElementById('currencyRow') || document.createElement('div');
+            const inputWrapper = document.createElement('div');
+            const buttonWrapper = document.createElement('div');
+            const input = document.createElement('input');
+            const startEditBtn = document.createElement('div');
+            const saveEditBtn = document.createElement('div');
+            const cancelEditBtn = document.createElement('div');
+
+            currency = JSON.parse(currency);
+    
+            input.type = 'text';
+            input.readOnly = true;
+            input.value = currency.name;
+            input.placeholder = 'Name';
+    
+            startEditBtn.textContent = 'Bearbeiten';
+            saveEditBtn.textContent = 'Speichern';
+            cancelEditBtn.textContent = 'Abbrechen';
+    
+            saveEditBtn.classList.add('disable');
+            cancelEditBtn.classList.add('disable');
+    
+            startEditBtn.addEventListener('click', () => {                
+                if (!startEditBtn.className.includes('disable')) {
+                    input.readOnly = false;
+                    input.classList.add('active');
+    
+                    input.oldVal = input.value;
+                    
+                    startEditBtn.classList.add('disable');
+                    saveEditBtn.classList.remove('disable');
+                    cancelEditBtn.classList.remove('disable');
+                }
+            });
+    
+            cancelEditBtn.addEventListener('click', () => {
+                if (!cancelEditBtn.className.includes('disable')) {
+                    input.value = input.oldVal;
+                    input.readOnly = true;
+                    input.classList.remove('active');
+                    
+                    saveEditBtn.classList.add('disable');
+                    cancelEditBtn.classList.add('disable');
+                    startEditBtn.classList.remove('disable');
+                }
+            });
+    
+            saveEditBtn.addEventListener('click', () => {
+                if (!saveEditBtn.className.includes('disable')) {
+                    if (input.value.trim() !== '') {
+                        input.readOnly = true;
+                        input.classList.remove('active');
+                        
+                        saveEditBtn.classList.add('disable');
+                        cancelEditBtn.classList.add('disable');
+                        startEditBtn.classList.remove('disable');
+                        
+                        socket.emit('update currency', {name: input.value});
+                        socket.on('currency updated', () => {
+                            socket.emit('get all jobs', null);
+                            socket.emit('request currency', null);
+                            socket.emit('request jobs', null);
+                        });
+
+                        showFeedbackMessage(true, 'Währung aktualisiert');
+                    } else {
+                        showFeedbackMessage(false, 'Name ist leer');
+                    }
+                }
+            });
+
+            row.classList.add('shortCutRow');
+            row.setAttribute('id', 'currencyRow');
+            currencyWrapper.setAttribute('id', 'currencyWrapper');
+            inputWrapper.classList.add('inputWrapper');
+            buttonWrapper.classList.add('buttonWrapper');
+            
+            inputWrapper.appendChild(input);
+            buttonWrapper.appendChild(startEditBtn);
+            buttonWrapper.appendChild(saveEditBtn);
+            buttonWrapper.appendChild(cancelEditBtn);
+            row.appendChild(inputWrapper);
+            row.appendChild(buttonWrapper);
+            document.getElementsByClassName('jobShortCutBar')[0].appendChild(row);
+        });
+    }
+
     function printCreateJobsWindow() {
         const createJob = document.createElement('div');
         const text = document.createElement('h2');
