@@ -49,6 +49,14 @@ class JobRepository {
     async getAll() {
         return JSON.parse(await promisify(fs.readFile)('./data/jobs.json', 'utf8'));
     }
+
+    async updateCurrency(currency) {
+        await promisify(fs.writeFile)('./data/currency.json', JSON.stringify(currency), err => {
+            if (err) {
+                console.error(err);
+            }
+        });
+    }
 }
 
 module.exports = JobRepository;
