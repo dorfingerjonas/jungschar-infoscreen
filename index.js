@@ -21,12 +21,6 @@ app.use(express.static('public/media/video'));
 app.use(express.static('public/presentation'));
 
 io.on('connection', (socket) => {
-    console.log('user connected');
-    
-    socket.on('disconnect', () => {
-        console.log('user disconnected');
-    });
-
     socket.on('request time', () => {
         socket.emit('time', reqHandler.getTime());
     });
