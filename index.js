@@ -57,8 +57,8 @@ io.on('connection', (socket) => {
         socket.emit('user svg', await reqHandler.getUserSvg());
     });
 
-    socket.on('request currency', () => {
-        socket.emit('currency', reqHandler.getCurrency());
+    socket.on('request currency', async () => {
+        io.emit('currency', await reqHandler.getCurrency());
     });
 
     socket.on('get all news', async () => {
