@@ -116,6 +116,11 @@ io.on('connection', (socket) => {
     socket.on('deselect job', job => {
         io.emit('deselect workplace', job);
     });
+
+    socket.on('update currency', async (currency) => {
+        await jobRepo.updateCurrency(currency);
+        socket.emit('currency updated', null);        
+    });
 });
 
 http.listen(3000, () => {
