@@ -9,15 +9,21 @@
 }
 
 #manageJobs {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: flex-start;
+}
+
+#manageJobsWrapper {
+    min-height: 80vh;
     padding-top: 3vh;
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
     justify-content: space-evenly;
-    overflow-y: scroll;
 }
 
-#jobScreen .job, #manageJobs .job {
+#jobScreen .job, #manageJobsWrapper .job {
     width: 15vw;
     padding: 1.5vh 1.5vw;
     border-radius: 5px;
@@ -25,37 +31,37 @@
     transition: opacity 400ms ease-in-out;
 }
 
-#manageJobs .job {
+#manageJobsWrapper .job {
     flex-direction: column;
 }
 
-#jobScreen .job h2, #manageJobs .job h2 {
+#jobScreen .job h2, #manageJobsWrapper .job h2 {
     text-align: center;
     margin: 0;
     font-size: 1.2vw;
 }
 
-#jobScreen .job p, #manageJobs .job p {
+#jobScreen .job p, #manageJobsWrapper .job p {
     margin: 3vh 0;
     font-size: .8vw;
 }
 
-#manageJobs .job p {
+#manageJobsWrapper .job p {
     font-size: 1vw;
 }
 
-#jobScreen .job .userWrapper, #manageJobs .job .userWrapper {
+#jobScreen .job .userWrapper, #manageJobsWrapper .job .userWrapper {
     display: flex;
     justify-content: space-around;
     align-items: center;
     flex-direction: row;
 }
 
-#manageJobs .job .userWrapper {
+#manageJobsWrapper .job .userWrapper {
     width: 70%;
 }
 
-#jobScreen .job .userWrapper svg, #manageJobs .job .userWrapper svg {
+#jobScreen .job .userWrapper svg, #manageJobsWrapper .job .userWrapper svg {
     width: 1.8vw;
 }
 
@@ -67,7 +73,7 @@
     opacity: .5;
 }
 
-#jobScreen .job .userWrapper svg path, #manageJobs .job .userWrapper svg path {
+#jobScreen .job .userWrapper svg path, #manageJobsWrapper .job .userWrapper svg path {
     fill: #42b983;
     transition: fill 400ms ease-in-out;
 }
