@@ -299,6 +299,46 @@ window.addEventListener('load', () => {
         parent.appendChild(newButtonBar);
     }
 
+    function printSearchBar() {
+        const row = document.createElement('div');
+        const searchWrapper = document.createElement('div');
+        const input = document.createElement('input');
+
+        input.type = 'text';
+        input.placeholder = 'Suche';
+
+        let jobs = [];
+
+        input.addEventListener('focus', () => {
+            const jobElements = document.querySelectorAll(`#${parent.id} .job`);
+
+            jobs = [];
+
+            for (const job of jobElements) {
+                jobs.push({
+                    name: job.querySelector('.inputWrapper input').value.toLowerCase(),
+                    box: job
+                });
+            }
+        });
+
+        input.addEventListener('input', () => {
+            for (const job of jobs) {
+                if (job.name.includes(input.value.toLowerCase())) {
+                    job.box.style.display = 'flex';
+                } else {
+                    job.box.style.display = 'none';
+                }
+            }
+        });
+
+        row.classList.add('shortCutRow');
+        searchWrapper.setAttribute('id', 'searchWrapper');
+
+        searchWrapper.appendChild(input);
+        row.appendChild(searchWrapper);
+        document.getElementsByClassName('jobShortCutBar')[0].appendChild(row);
+    }
     function printCreateJobsWindow() {
         const createJob = document.createElement('div');
         const text = document.createElement('h2');
