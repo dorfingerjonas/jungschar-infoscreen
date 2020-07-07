@@ -11,7 +11,11 @@ function getSocket() {
 function removeAllChildren(parent) {
     if (parent !== null && parent !== undefined) {
         if (parent.length !== undefined) {
-            parent = document.getElementById(parent);
+            if (document.getElementById(parent) !== null) {
+                parent = document.getElementById(parent);
+            } else {
+                return false;
+            }
         }
 
         while (parent.firstChild) {
