@@ -4,10 +4,14 @@ window.addEventListener('load', () => {
 
     socket.emit('get all jobs', null);
 
+    printCreateJobsWindow();
+
     socket.on('all jobs', data => {
         removeAllChildren(parent);
+
         printShortcutButtons();
-        printCreateJobsWindow();
+        printSearchBar();
+        printCurrency();
 
         for (const job of data) {
             parent.appendChild(createJobItem(job));
@@ -238,6 +242,7 @@ window.addEventListener('load', () => {
 
     function printShortcutButtons() {
         const newButtonBar = document.createElement('div');
+        const row = document.createElement('div');
         const deleteAll = document.createElement('div');
         const refresh = document.createElement('div');
         const refreshPresentationJob = document.createElement('div');
@@ -253,6 +258,7 @@ window.addEventListener('load', () => {
         refreshPresentationJob.classList.add('jobShortCutButton');
         createJob.classList.add('jobShortCutButton');
         newButtonBar.classList.add('jobShortCutBar');
+        row.classList.add('shortCutRow');
 
         deleteAll.addEventListener('click', () => {
             socket.emit('job delete all', null);
@@ -277,7 +283,7 @@ window.addEventListener('load', () => {
 
         createJob.addEventListener('click', () => {
             const createJobWindow = document.getElementById('createJobWindow');
-            const disableCreateWindow = document.getElementById('disableCreateWindow');
+            const disableCreateWindow = document.getElementById('disableJobCreateWindow');
             const nav = document.getElementsByTagName('nav')[0];
             const currentPageBar = document.getElementById('currentPageBar');
             createJobWindow.classList.remove('hide');
@@ -292,10 +298,11 @@ window.addEventListener('load', () => {
             }, 5);
         });
 
-        newButtonBar.appendChild(deleteAll);
-        newButtonBar.appendChild(refreshPresentationJob);
-        newButtonBar.appendChild(refresh);
-        newButtonBar.appendChild(createJob);
+        row.appendChild(deleteAll);
+        row.appendChild(refreshPresentationJob);
+        row.appendChild(refresh);
+        row.appendChild(createJob);
+        newButtonBar.appendChild(row);
         parent.appendChild(newButtonBar);
     }
 
@@ -462,7 +469,7 @@ window.addEventListener('load', () => {
         createJob.setAttribute('id', 'createJobWindow');
         checkBoxWrapper.setAttribute('id', 'checkBoxWrapper');
         buttonBar.setAttribute('id', 'buttonBar');
-        disableCreateWindow.setAttribute('id', 'disableCreateWindow');
+        disableCreateWindow.setAttribute('id', 'disableJobCreateWindow');
         disableCreateWindow.setAttribute('class', 'hide');
         changeSalary.setAttribute('class', 'changeSalary');
         changeAmount.setAttribute('class', 'changeAmount');
@@ -541,7 +548,7 @@ window.addEventListener('load', () => {
 
         cancelButton.addEventListener('click', () => {
             const createJobWindow = document.getElementById('createJobWindow');
-            const disableCreateWindow = document.getElementById('disableCreateWindow');
+            const disableCreateWindow = document.getElementById('disableJobCreateWindow');
             const nav = document.getElementsByTagName('nav')[0];
 
             createJobWindow.style.opacity = 0;
