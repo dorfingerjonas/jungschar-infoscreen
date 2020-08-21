@@ -18,11 +18,11 @@ class RequestHandler {
     }
 
     async getLogos() {
-        const files = await promisify(fs.readdir)('./public/media/img/logos')
+        const files = await promisify(fs.readdir)('./public/media/img');
         const response = [];
 
         for (const file of files) {
-            if (/.(jpeg|jpg|gif|png|svg)/i.test(file)) {
+            if (/.(jpeg|jpg|jfif|pjpeg|pjp|gif|png|svg)/i.test(file)) {
                 response.push(file);
             }
         }
