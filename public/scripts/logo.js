@@ -1,10 +1,12 @@
 window.addEventListener('load', () => {
     const parent = document.getElementById('logoBox');
     const socket = getSocket();
+    let interval;
 
     socket.emit('request logos', null);    
 
     socket.on('logos', files => {
+        clearInterval(interval);
         removeAllChildren(parent);
         
         if (files.length === 1) {
@@ -19,7 +21,7 @@ window.addEventListener('load', () => {
         } else if (files.length >= 2) {
             for (let i = 0; i < files.length; i++) {
                 const img = document.createElement('img');
-                img.src = `../media/img/logos/${files[i]}`;
+                img.src = `../media/img/${files[i]}`;
                 
                 if (i !== 0) img.classList.add('hide');
                 
@@ -29,8 +31,8 @@ window.addEventListener('load', () => {
                     resizeImage(img);
                 }, 30);
             }
-            
-            setInterval(() => {
+
+            interval = setInterval(() => {
                 const images = parent.children;
                 const rack = images[images.length - 1].src;
 
@@ -53,6 +55,8 @@ window.addEventListener('load', () => {
                     }, 50);
                 }, 310);
             }, 15000);
+        } else {
+            parent.appendChild(createNoElementsMessage());
         }
     });
 });
