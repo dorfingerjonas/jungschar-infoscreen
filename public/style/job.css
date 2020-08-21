@@ -58,11 +58,12 @@
 }
 
 #manageJobsWrapper .job .userWrapper {
-    width: 70%;
+    width: 100%;
 }
 
 #jobScreen .job .userWrapper svg, #manageJobsWrapper .job .userWrapper svg {
     width: 1.8vw;
+    cursor: pointer;
 }
 
 .selectedWorkplace {
