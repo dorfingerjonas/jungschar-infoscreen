@@ -7,8 +7,10 @@ const schedule = require('node-schedule');
 const RequestHandler = require('./controller/RequestHandler');
 const NewsRepository = require('./controller/NewsRepository');
 const JobRepository = require('./controller/JobRepository');
+const WeatherRepository = require('./controller/WeatherRepository');
 const newsRepo = new NewsRepository();
 const jobRepo = new JobRepository();
+const weatherRepo = new WeatherRepository();
 const reqHandler = new RequestHandler();
 
 app.use(express.static('public'));
