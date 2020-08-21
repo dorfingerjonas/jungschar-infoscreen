@@ -24,6 +24,35 @@ app.use(express.static('public/media/img'));
 app.use(express.static('public/media/video'));
 app.use(express.static('public/presentation'));
 
+app.post('/fileupload', (req, res) => {
+    const form = new formidable.IncomingForm();
+
+    form.parse(req, (err, fields, files) => {
+        if (files.filetoupload !== undefined) {
+            const oldPath = files.filetoupload.path;
+            let newPath;
+    
+            if (files.filetoupload.type.includes('video')) {
+                newPath = `./public/media/video/${files.filetoupload.name}`;
+            } else if (files.filetoupload.type.includes('image')) {
+                newPath = `./public/media/img/${files.filetoupload.name}`;
+            }
+    
+            fs.rename(oldPath, newPath, err => {
+                if (err) {
+                    console.error(err.message);
+                    io.emit('uploadResult', false);
+                } else {
+                    io.emit('uploadResult', true);
+                    res.status(204).send();
+                }
+            });
+        } else {
+            io.emit('uploadResult', false);
+        }
+    });
+});
+
 io.on('connection', (socket) => {
     socket.on('request time', () => {
         io.emit('time', reqHandler.getTime());
