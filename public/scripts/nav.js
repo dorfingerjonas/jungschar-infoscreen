@@ -3,8 +3,9 @@ window.addEventListener('load', () => {
     const elements =[
         {nav: document.getElementById('navDashboard'), screen: document.getElementById('dashboard')},
         {nav: document.getElementById('navManageJobs'), screen: document.getElementById('manageJobs')},
-        {nav: document.getElementById('navEditNews'), screen: document.getElementById('editNews')},
         {nav: document.getElementById('navEditJobs'), screen: document.getElementById('editJobs')},
+        {nav: document.getElementById('navEditNews'), screen: document.getElementById('editNews')},
+        {nav: document.getElementById('navEditWeather'), screen: document.getElementById('editWeather')},
         {nav: document.getElementById('navMediaContent'), screen: document.getElementById('mediaContent')},
     ];
 
@@ -12,7 +13,7 @@ window.addEventListener('load', () => {
         const element = elements[i];
         
         element.nav.addEventListener('click', () => {
-            currentPageBar.style.left = `${i * 14}vw`;
+            currentPageBar.style.left = `${i * 14.16}vw`;
             hideAll();
             element.screen.classList.remove('hide');
         });
