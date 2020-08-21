@@ -11,11 +11,27 @@ class RequestHandler {
     }
 
     async getWeather() {
-        const api = require('../data/weatherapi.json');
-        const url = `${api.url}?id=${api.cityId}&appid=${api.apiKey}&units=${api.units}`;
+        const customWeather = await this.getCustomWeather();
 
-        const response = await fetch(url);
-        return await response.json();
+        if (customWeather.active) {
+            return customWeather;
+        } else {
+            const api = JSON.parse(await promisify(fs.readFile)('./data/weatherapi.json', 'utf8'));
+            const url = `${api.url}?q=${api.city}&appid=${api.apiKey}&units=${api.units}`;
+    
+            const response = await fetch(url);
+            const weather = await response.json();
+
+            return {
+                temp: weather.main.temp,
+                minTemp: weather.main.temp_min,
+                maxTemp: weather.main.temp_max,
+                speed: weather.wind.speed,
+                pressure: weather.main.pressure,
+                humidity: weather.main.humidity,
+                icon: weather.weather[0].icon
+            }
+        }
     }
 
     async getLogos() {
