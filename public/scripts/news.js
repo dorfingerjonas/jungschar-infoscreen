@@ -15,7 +15,7 @@ window.addEventListener('load', () => {
 
                 parent.appendChild(news);
             }
-        } else if (data.length >= 2) {        
+        } else if (data.length >= 2) {
             for (let i = 0; i < data.length; i++) {
                 if (data[i].isVisible) {
                     const news = createNews(data[i]);
@@ -43,6 +43,8 @@ window.addEventListener('load', () => {
                     }
                 }
             }, 10000);
+        } else {
+            parent.appendChild(createNoElementsMessage());
         }
     });
 });
