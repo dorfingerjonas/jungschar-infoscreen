@@ -55,6 +55,14 @@ class RequestHandler {
         });
     }
 
+    async deleteImage(filename) {
+        fs.unlink(`./public/media/img/${filename}`, err => {
+            if (err) {
+                console.error(err);
+            }
+        });
+    }
+
     async getVideos() {
         const files = await promisify(fs.readdir)('./public/media/video')
         const response = [];
