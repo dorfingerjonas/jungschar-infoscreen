@@ -3,6 +3,7 @@ const { promisify } = require('util');
 const fetch = require('node-fetch');
 const NewsRepository = require('./NewsRepository');
 const JobRepository = require('./JobRepository');
+const WeatherRepository = require('./WeatherRepository');
 
 class RequestHandler {
     getTime() {
