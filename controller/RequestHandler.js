@@ -76,6 +76,9 @@ class RequestHandler {
         return await new WeatherRepository().getCustomJSON();
     }
 
+    async getWeatherIcons() {
+        return await new WeatherRepository().getAllIcons();
+    }
 }
 
 module.exports = RequestHandler;
