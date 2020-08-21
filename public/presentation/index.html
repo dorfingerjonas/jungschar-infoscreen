@@ -1,37 +1,39 @@
-<html lang="de">
+<html lang='de'>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <title>Jungscharlager Infoscreen</title>
-    <link rel="stylesheet" href="../main.css">
-    <link rel="stylesheet" href="../layout.css">
-    <link rel="stylesheet" href="../sidebar.css">
-    <link rel="stylesheet" href="../video.css">
-    <link rel="stylesheet" href="../news.css">
-    <link rel="stylesheet" href="../job.css">
-    <script src="../time.js"></script>
-    <script src="../weather.js"></script>
-    <script src="../videos.js"></script>
-    <script src="../mode.js"></script>
-    <script src="../main.js"></script>
-    <script src="../logo.js"></script>
-    <script src="../news.js"></script>
-    <script src="../job.js"></script>
-    <script src="/socket.io/socket.io.js"></script>
+    <link rel='stylesheet' href='/favicon.ico'>
+    <script src='../job.js'></script>
+    <script src='../time.js'></script>
+    <script src='../mode.js'></script>
+    <script src='../main.js'></script>
+    <script src='../logo.js'></script>
+    <script src='../news.js'></script>
+    <script src='../videos.js'></script>
+    <script src='../weather.js'></script>
+    <script src='../presentationMain.js'></script>
+    <script src='/socket.io/socket.io.js'></script>
+    <link rel='stylesheet' href='../job.css'>
+    <link rel='stylesheet' href='../main.css'>
+    <link rel='stylesheet' href='../news.css'>
+    <link rel='stylesheet' href='../video.css'>
+    <link rel='stylesheet' href='../layout.css'>
+    <link rel='stylesheet' href='../sidebar.css'>
 </head>
 <body>
-    <main id="mainScreen">
-        <section id="sidebar">
-            <div class="sidebox" id="timeBox"></div>
-            <div class="sidebox" id="weatherBox"></div>
-            <div class="sidebox" id="logoBox"></div>
+    <main id='mainScreen'>
+        <section id='sidebar'>
+            <div class='sidebox' id='timeBox'></div>
+            <div class='sidebox' id='weatherBox'></div>
+            <div class='sidebox' id='logoBox'></div>
         </section>
     
-        <section id="video"></section>
+        <section id='video'></section>
     
-        <section id="news"></section>
+        <section id='news'></section>
     </main>
 
-    <div id="jobScreen" class="hide"></div>
+    <div id='jobScreen' class='hide'></div>
 </body>
 </html>
