@@ -121,6 +121,54 @@ io.on('connection', (socket) => {
         await jobRepo.updateCurrency(currency);
         socket.emit('currency updated', null);        
     });
+
+    socket.on('get all videos', async () => {
+        reqHandler.getVideos().then(res => {socket.emit('all videos', res); });
+    });
+
+    socket.on('get all images', async () => {
+        reqHandler.getImages().then(res => {socket.emit('all images', res); });
+    });
+
+    socket.on('delete video', video => {
+        reqHandler.deleteVideo(video);
+    });
+
+    socket.on('delete image', image => {
+        reqHandler.deleteImage(image);
+    });
+
+    socket.on('get api infos', async () => {
+        socket.emit('api infos', await reqHandler.getApiInfos());
+    });
+
+    socket.on('get custom weather', async () => {
+        socket.emit('customWeather', await reqHandler.getCustomWeather());
+    });
+
+    socket.on('get weather icons', async () => {
+        socket.emit('weather icons', await reqHandler.getWeatherIcons());
+    });
+
+    socket.on('update city', city => {
+        weatherRepo.updateCity(city);
+    });
+
+    socket.on('update apiKey', key => {
+        weatherRepo.updateKey(key);
+    });
+
+    socket.on('update weather state', state => {
+        weatherRepo.changeCustomWeatherState(state);
+    });
+
+    socket.on('update custom weather', weather => {
+        weatherRepo.updateCustomWeather(weather);
+    });
+    
+    socket.on('presentation started', () => {
+        io.emit('presentation state changed', true);
+    });
 });
 
 http.listen(3000, () => {
