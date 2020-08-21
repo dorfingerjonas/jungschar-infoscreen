@@ -1,55 +1,89 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang='de'>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <title>Jungscharlager Infoscreen</title>
-    <script src="./main.js"></script>
-    <script src="./nav.js"></script>
-    <script src="./adminMain.js"></script>
-    <script src="./editNews.js"></script>
-    <script src="./editJobs.js"></script>
-    <script src="./manageJobs.js"></script>
-    <script src="/socket.io/socket.io.js"></script>
-    <link rel="stylesheet" href="main.css">
-    <link rel="stylesheet" href="mainContent.css">
-    <link rel="stylesheet" href="nav.css">
-    <link rel="stylesheet" href="adminMain.css">
-    <link rel="stylesheet" href="edit.css">
-    <link rel="stylesheet" href="job.css">
+    <link rel='stylesheet' href='/favicon.ico'>
+    <script src='./nav.js'></script>
+    <script src='./main.js'></script>
+    <script src='./editNews.js'></script>
+    <script src='./editJobs.js'></script>
+    <script src='./dashboard.js'></script>
+    <script src='./adminMain.js'></script>
+    <script src='./manageJobs.js'></script>
+    <script src='./editWeather.js'></script>
+    <script src='./manageMedia.js'></script>
+    <script src='/socket.io/socket.io.js'></script>
+    <link rel='stylesheet' href='nav.css'>
+    <link rel='stylesheet' href='job.css'>
+    <link rel='stylesheet' href='main.css'>
+    <link rel='stylesheet' href='edit.css'>
+    <link rel='stylesheet' href='adminMain.css'>
+    <link rel='stylesheet' href='dashboard.css'>
+    <link rel='stylesheet' href='manageMedia.css'>
+    <link rel='stylesheet' href='mainContent.css'>
+    <link rel='stylesheet' href='customWeather.css'>
 </head>
 <body>
     <nav>
-        <span id="navDashboard">Dashboard</span>
-        <span id="navManageJobs">Job Verteilung</span>
-        <span id="navEditNews">News bearbeiten</span>
-        <span id="navEditJobs">Jobs bearbeiten</span>
-        <span id="navMediaContent">Medieninhalte verwalten</span>
+        <span id='navDashboard'>Dashboard</span>
+        <span id='navManageJobs'>Job Verteilung</span>
+        <span id='navEditJobs'>Jobs bearbeiten</span>
+        <span id='navEditNews'>News bearbeiten</span>
+        <span id='navEditWeather'>Wetter bearbeiten</span>
+        <span id='navMediaContent'>Medieninhalte verwalten</span>
     </nav>
 
-    <div id="currentPageBar"></div>
+    <div id='currentPageBar'></div>
 
-    <div id="feedback"></div>
+    <div id='feedback'></div>
 
-    <main id="mainContent">
-        <section id="dashboard">
-            <h1>Dashboard</h1>
+    <main id='mainContent'>
+        <section id='dashboard'>
+            <div id='dashboardWrapper'>
+                
+                <div class='dashboardBtn' id='openPresentationWindow'>
+                    <span>Präsentationsfenster öffnen</span>
+                </div>
+
+                <div class='dashboardBtn' id='closePresentationWindow'>
+                    <span>Präsentationsfenster schließen</span>
+                </div>
+
+                <div class='dashboardBtn' id='refreshPresentation'>
+                    <span>Präsentation aktualisieren</span>
+                </div>
+
+                <div class='dashboardBtn' id='switchScreens'>
+                    <span>Job Ansicht aktivieren</span>
+                </div>
+
+                <div id='previewWrapper'>
+                    <h2>Vorschau</h2>
+                    <iframe id='preview' src='./presentation' frameborder='0'></iframe>
+                </div>
+            </div>
         </section>
 
-        <section id="manageJobs" class="hide">
-            <div id="manageJobsWrapper"></div>
+        <section id='manageJobs' class='hide'>
+            <div id='manageJobsWrapper'></div>
         </section>
 
-        <section id="editNews" class="hide">
-            <div id="newsWrapper"></div>
+        <section id='editNews' class='hide'>
+            <div id='newsWrapper'></div>
         </section>
 
-        <section id="editJobs" class="hide">
-            <div id="jobWrapper"></div>
+        <section id='editJobs' class='hide'>
+            <div id='jobWrapper'></div>
         </section>
 
-        <section id="mediaContent" class="hide">
-            <h1>Medieninhalte verwalten</h1>
+        <section id='mediaContent' class='hide'>
+            <div id='manageMedia'></div>
+        </section>
+
+        <section id='editWeather' class='hide'>
+            <div id='weatherWrapper'></div>
         </section>
     </main>
 </body>
