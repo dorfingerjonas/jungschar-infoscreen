@@ -22,23 +22,23 @@ app.use(express.static('public/presentation'));
 
 io.on('connection', (socket) => {
     socket.on('request time', () => {
-        socket.emit('time', reqHandler.getTime());
+        io.emit('time', reqHandler.getTime());
     });
 
     socket.on('request weather', async () => {
-        schedule.scheduleJob("*/10 * * * *", async () => {
-            socket.emit('weather', await reqHandler.getWeather());
+        schedule.scheduleJob('*/10 * * * *', async () => {
+            io.emit('weather', await reqHandler.getWeather());
         });
 
-        socket.emit('weather', await reqHandler.getWeather());
+        io.emit('weather', await reqHandler.getWeather());
     });
 
     socket.on('request logos', () => {
-        reqHandler.getLogos().then(res => {socket.emit('logos', res); });
+        reqHandler.getLogos().then(res => {io.emit('logos', res); });
     });
 
     socket.on('request videos', () => {
-        reqHandler.getVideos().then(res => {socket.emit('videos', res); });
+        reqHandler.getVideos().then(res => {io.emit('videos', res); });
     });
 
     socket.on('request news', async () => {
@@ -54,7 +54,7 @@ io.on('connection', (socket) => {
     });
 
     socket.on('request user svg', async () => {
-        socket.emit('user svg', await reqHandler.getUserSvg());
+        io.emit('user svg', await reqHandler.getUserSvg());
     });
 
     socket.on('request currency', async () => {
