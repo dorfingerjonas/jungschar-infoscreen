@@ -27,3 +27,11 @@ function removeAllChildren(parent) {
 
     return false;
 }
+
+function createNoElementsMessage() {
+    const text = document.createElement('p');
+    text.textContent = 'Keine Elemente vorhanden.';
+    text.style.color = 'red';
+    
+    return text;
+}
