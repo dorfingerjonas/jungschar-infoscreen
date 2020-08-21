@@ -36,7 +36,7 @@ class RequestHandler {
         const response = [];
 
         for (const file of files) {
-            if (file.endsWith('.mp4')) {
+            if (file.toLowerCase().endsWith('.mp4') || file.toLowerCase().endsWith('.m4v')) {
                 response.push(file);
             }
         }
