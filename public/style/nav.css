@@ -1,8 +1,8 @@
 nav {
-    width: 70%;
+    width: 85%;
     height: 8vh;
-    padding-right: 30%;
-    font-size: 1vw;
+    padding-right: 15%;
+    font-size: 1em;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -27,7 +27,7 @@ nav span:active {
 }
 
 #currentPageBar {
-    width: 14vw;
+    width: 14.16vw;
     height: .5vh;
     background: #009bab;
     position: absolute;
