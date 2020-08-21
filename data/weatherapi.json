@@ -1,6 +1,1 @@
-{
-    "url": "https://api.openweathermap.org/data/2.5/weather",
-    "apiKey": "[Your key]",
-    "cityId": "7872174",
-    "units": "metric"
-}
+[Your key]{"url":"https://api.openweathermap.org/data/2.5/weather","apiKey":"[Your key]","city":"Schwanenstadt","units":"metric"}
