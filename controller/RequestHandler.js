@@ -63,6 +63,17 @@ class RequestHandler {
         });
     }
 
+    async getImages() {
+        const files = await promisify(fs.readdir)('./public/media/img');
+        const response = [];
+
+        for (const file of files) {
+            response.push(file);
+        }
+
+        return response;
+    }
+
     async getVideos() {
         const files = await promisify(fs.readdir)('./public/media/video')
         const response = [];
