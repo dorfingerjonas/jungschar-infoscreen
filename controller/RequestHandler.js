@@ -71,6 +71,11 @@ class RequestHandler {
     async getApiInfos() {
         return await new WeatherRepository().getJSON();
     }
+
+    async getCustomWeather() {
+        return await new WeatherRepository().getCustomJSON();
+    }
+
 }
 
 module.exports = RequestHandler;
