@@ -67,6 +67,10 @@ class RequestHandler {
     async getCrossSvg() {
         return await promisify(fs.readFile)('./public/icons/cross.svg', 'utf8');
     }
+
+    async getApiInfos() {
+        return await new WeatherRepository().getJSON();
+    }
 }
 
 module.exports = RequestHandler;
