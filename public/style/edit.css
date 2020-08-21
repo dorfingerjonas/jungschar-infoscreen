@@ -1,0 +1,283 @@
+#editNews, #editJobs, #editWeather {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+#newsWrapper, #jobWrapper, #weatherWrapper {
+    width: 70vw;
+    transition: opacity 300ms ease-in-out;
+}
+
+.news, .job, #currencyRow, #cityRow, #apiRow, #stateRow, #modifyRow {
+    width: 97%;
+    margin: 2vh 0 4vh 0;
+    padding: 1vh 1vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    border-radius: 5px;
+    box-shadow: 1px 1px 9px 0px #dbdbdb;
+}
+
+#searchWrapper {
+    width: 40%;
+    margin-right: 60%;
+}
+
+.inputWrapper {
+    width: 60%;
+    margin-right: 5vw;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+
+#weatherWrapper .inputWrapper {
+    flex-direction: row;
+    justify-content: flex-start;
+    font-size: 1.2vw;
+}
+
+#weatherWrapper .inputWrapper input {
+    font-size: 1.2vw !important;
+}
+
+#stateRow .inputWrapper {
+    margin: 1vh 5vw 1vh 0;
+    padding: .5vh .4vw;
+}
+
+.buttonWrapper {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-direction: row;
+}
+
+.buttonWrapper > div {
+    background: #009bab;
+    color: #fff;
+    padding: 1vh .5vw;
+    font-size: 1vw;
+    box-shadow: 1px 1px 9px 0px #dbdbdb;
+    border-radius: 5px;
+    cursor: pointer;
+    user-select: none;
+    transition: opacity 200ms ease-in-out;
+}
+
+.buttonWrapper > div:nth-last-child(1) {
+    background: #dc5656;
+}
+
+#currencyRow .buttonWrapper > div:nth-last-child(1), #cityRow .buttonWrapper > div:nth-last-child(1), #apiRow .buttonWrapper > div:nth-last-child(1), #stateRow .buttonWrapper > div:nth-last-child(1), #modifyRow .buttonWrapper > div:nth-last-child(1) {
+    background: #009bab;
+}
+
+.news input, .news textarea, .inputWrapper input, .job textarea, #searchWrapper input {
+    width: 100%;
+    margin: 1vh 0;
+    padding: 1vh .4vw;
+    background: transparent;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.4vw;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid transparent;
+    transition: border-color 250ms ease-in-out;
+}
+
+#searchWrapper input {
+    font-size: 1.2vw;
+}
+
+.news textarea, .job textarea {
+    height: 10vh;
+    resize: none;
+    font-size: 1.2vw;
+}
+
+.active, #searchWrapper input {
+    box-shadow: 1px 1px 9px 0px #dbdbdb;
+    border-radius: 5px;
+    border-color: lightgray !important;
+}
+
+.active:focus, #searchWrapper input:focus {
+    border-color: #009bab !important;
+}
+
+.disable {
+    opacity: .3 !important;
+    cursor: not-allowed !important;
+}
+
+.changeNumberWrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.changeNumberWrapper > div, .changeSalary, .changeAmount {
+    width: 50%;
+    margin: .5vh 0;
+    font-size: 1.2vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+
+.changeSalary, .changeAmount {
+    width: 70%;
+}
+
+.changeNumberWrapper > div label, .changeSalary label, .changeAmount label {
+    width: 40%;
+}
+
+.changeNumberWrapper div div, .changeSalary div, .changeAmount div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.changeNumberWrapper div div span, .changeSalary div span, .changeAmount div span {
+    width: 1.5vw;
+    height: 1.5vw;
+    margin: 0 .4vw;
+    padding: 0.4vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3vw;
+    background: #009bab;
+    color: #fff;
+    border-radius: 100%;
+    box-shadow: 1px 1px 9px 0px #dbdbdb;
+    cursor: pointer;
+    user-select: none;
+}
+
+.checkBoxWrapper, #checkBoxWrapper {
+    width: 100%;
+    font-size: 1.2vw;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+}
+
+#checkBoxWrapper {
+    width: 70%;
+}
+
+input[type='checkbox'] {
+    width: 1vw;
+    height: 1vw;
+    margin-left: 1vw;
+    box-shadow: none;
+    border-color: transparent !important;
+}
+
+.newsShortCutBar, .jobShortCutBar .shortCutRow, .manageJobShortCutBar .shortCutRow, .weatherShortCutBar {
+    width: 100%;
+    margin-top: 3vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+}
+
+.newsShortCutButton, .jobShortCutButton, .manageJobShortCutButton, .weatherShortCutButton {
+    background: #009bab;
+    color: #fff;
+    font-size: 1vw;
+    padding: 1vh .5vw;
+    box-shadow: 1px 1px 9px 0px #dbdbdb;
+    border-radius: 5px;
+    cursor: pointer;
+    user-select: none;
+}
+
+#createNewsWindow, #createJobWindow {
+    width: 36vw;
+    height: 50vh;
+    padding-bottom: 2vh;
+    position: fixed;
+    top: 20vh;
+    left: 32vw;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 1px 1px 9px 0px #dbdbdb;
+    opacity: 0;
+    transform: scale(.6);
+    transition: transform 300ms ease-in-out, opacity 300ms ease-in-out;
+    z-index: 101;
+}
+
+#createNewsWindow h2, #createJobWindow h2 {
+    font-size: 1.1vw;
+}
+
+#createNewsWindow input[type='text'], #createNewsWindow textarea, #createJobWindow input[type='text'], #createJobWindow textarea {
+    width: 70%;
+    font-size: .7vw;
+    padding: 1vh .5vw;
+    border: none;
+    border-radius: 3px;
+    border-bottom: 2px solid lightgray;
+    box-shadow: 1px 1px 9px 0px #dbdbdb;
+    outline: none;
+    resize: none;
+    font-family: 'Roboto', sans-serif;
+    transition: border-color 250ms ease-in-out;
+}
+
+#createNewsWindow textarea, #createJobWindow textarea {
+    height: 10vh;
+}
+
+#createNewsWindow input[type='text']:focus, #createNewsWindow textarea:focus, #createJobWindow input[type='text']:focus, #createJobWindow textarea:focus {
+    border-color: #009bab;
+}
+
+#buttonBar {
+    width: 70%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+}
+
+#buttonBar div {
+    background: #009bab;
+    color: #fff;
+    font-size: 1vw;
+    padding: 1vh .5vw;
+    box-shadow: 1px 1px 9px 0px #dbdbdb;
+    border-radius: 5px;
+    cursor: pointer;
+    user-select: none;
+}
+
+#disableCreateWindow, #disableJobCreateWindow {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;    
+    top: 0;
+    left: 0;
+    z-index: 99;
+}

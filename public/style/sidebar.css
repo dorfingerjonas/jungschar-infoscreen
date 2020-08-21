@@ -1,0 +1,77 @@
+/* TimeBox */
+#timeBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'Roboto Thin', sans-serif;
+    font-size: 2vw;
+}
+
+#timeBox span:nth-child(1) {
+    font-size: 3.5vw;
+    margin-bottom: 2vh;
+}
+
+/* WeatherBox */
+#weatherBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+#weatherBox > div:nth-child(1) {
+    width: 60%;
+    height: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    font-size: 1.5vw;
+}
+
+#weatherBox > div:nth-child(2) {
+    width: 40%;
+    height: 100%;
+    border-left: 2px solid #009bab;
+    font-size: .8vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+
+#weatherBox > div:nth-child(2) > div {
+    width: 80%;
+    margin: 1vh 0;
+    display: flex;
+    justify-self: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+#weatherBox > div:nth-child(2) > div span:nth-child(1) {
+    font-size: .9vw;
+    font-weight: bold;
+    text-align: left;
+    width: 100%;
+}
+
+#weatherBox img {
+    width: 60%;
+}
+
+/* LogoBox */
+#logoBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+#logoBox img {
+    width: 70%;
+    border-radius: 3px;
+    transition: opacity 300ms ease-in-out;
+}
