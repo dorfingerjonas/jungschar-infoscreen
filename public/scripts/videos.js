@@ -1,4 +1,4 @@
-window.addEventListener('click', () => {
+window.addEventListener('load', () => {
     const parent = document.getElementById('video');
     const socket = getSocket();
 
@@ -9,13 +9,14 @@ window.addEventListener('click', () => {
 
         if (files.length === 1) {
             const video = createVideo(files[0]);
-            
-            setInterval(() => {
+
+            video.addEventListener('ended', () => {
+                video.currentTime = 0;
                 video.play();
-            }, video.duration * 1000 + 100);
+            });
 
             parent.appendChild(video);
-        } else if (files.length >= 2) {        
+        } else if (files.length >= 2) {
             for (let i = 0; i < files.length; i++) {
                 const video = createVideo(files[i]);
 
@@ -23,24 +24,16 @@ window.addEventListener('click', () => {
                     video.classList.add('hide');
                 } else {
                     video.play();
+
+                    video.addEventListener('ended', () => {
+                        next();
+                    });
                 }
 
                 parent.appendChild(video);
             }
-
-            setTimeout(() => {
-                if (parent.children[0] == NaN) {
-                    setTimeout(() => {
-                        setTimeout(() => {
-                            next();
-                        }, parent.children[0].duration * 1000);
-                    }, 20);
-                } else {
-                    setTimeout(() => {
-                        next();
-                    }, parent.children[0].duration * 1000);
-                }
-            }, 60);
+        } else {
+            parent.appendChild(createNoElementsMessage());
         }
 
         function next() {
@@ -55,19 +48,9 @@ window.addEventListener('click', () => {
             
             videos[0].play();
 
-            setTimeout(() => {
-                if (videos[0].duration === NaN) {
-                    setTimeout(() => {
-                        setTimeout(() => {
-                            next();
-                        }, videos[0].duration * 1000);
-                    }, 20);
-                } else {
-                    setTimeout(() => {
-                        next();
-                    }, videos[0].duration * 1000 + 40);
-                }
-            }, 60);
+            videos[0].addEventListener('endend', () => {
+                next();
+            });
         }
     });
 });
