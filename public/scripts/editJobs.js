@@ -146,28 +146,27 @@ window.addEventListener('load', () => {
 
         cancelEditBtn.addEventListener('click', () => {
             if (!cancelEditBtn.className.includes('disable')) {
-                if (headline.oldVal === headline.value
-                    && salary.oldVal === salary.textContent
-                    && amount.oldVal === amount.textContent
-                    && isVisible.oldVal === isVisible.checked) {
+                headline.readOnly = true;
+                isVisible.readOnly = true;
 
-                    headline.readOnly = true;
-                    isVisible.readOnly = true;
+                headline.value = headline.oldVal;
+                salary.value = salary.oldVal;
+                amount.value = amount.oldVal;
+                isVisible.checked = isVisible.oldVal;
+                salary.textContent = salary.oldVal;
+                amount.textContent = amount.oldVal;
 
-                    headline.classList.remove('active');
-                    isVisible.classList.remove('active');
-                    salPlusIcon.classList.remove('active');
-                    salMinusIcon.classList.remove('active');
-                    amPlusIcon.classList.remove('active');
-                    amMinusIcon.classList.remove('active');
-                    
-                    saveEditBtn.classList.add('disable');
-                    cancelEditBtn.classList.add('disable');
-                    startEditBtn.classList.remove('disable');
-                    deleteJobBtn.classList.remove('disable');
-                } else {                    
-                    showFeedbackMessage(false, 'ungespeicherte Änderungen');
-                }
+                headline.classList.remove('active');
+                isVisible.classList.remove('active');
+                salPlusIcon.classList.remove('active');
+                salMinusIcon.classList.remove('active');
+                amPlusIcon.classList.remove('active');
+                amMinusIcon.classList.remove('active');
+                
+                saveEditBtn.classList.add('disable');
+                cancelEditBtn.classList.add('disable');
+                startEditBtn.classList.remove('disable');
+                deleteJobBtn.classList.remove('disable');
             }
         });
 
@@ -367,7 +366,7 @@ window.addEventListener('load', () => {
             input.type = 'text';
             input.readOnly = true;
             input.value = currency.name;
-            input.placeholder = 'Name';
+            input.placeholder = 'Währung';
     
             startEditBtn.textContent = 'Bearbeiten';
             saveEditBtn.textContent = 'Speichern';

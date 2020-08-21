@@ -57,7 +57,7 @@ window.addEventListener('load', () => {
             }
         });
 
-        startEditBtn.addEventListener('click', () => {                
+        startEditBtn.addEventListener('click', () => {
             if (!startEditBtn.className.includes('disable')) {
                 headline.readOnly = false;
                 content.readOnly = false;
@@ -79,24 +79,22 @@ window.addEventListener('load', () => {
 
         cancelEditBtn.addEventListener('click', () => {
             if (!cancelEditBtn.className.includes('disable')) {
-                if (headline.oldVal === headline.value
-                    && content.oldVal === content.value
-                    && checkbox.oldVal === checkbox.checked) {
+                headline.readOnly = true;
+                content.readOnly = true;
+                checkbox.readOnly = true;
 
-                    headline.readOnly = true;    
-                    content.readOnly = true;
-                    checkbox.readOnly = true;
-                    headline.classList.remove('active');
-                    content.classList.remove('active');
-                    checkbox.classList.remove('active');
-                    
-                    saveEditBtn.classList.add('disable');
-                    cancelEditBtn.classList.add('disable');
-                    startEditBtn.classList.remove('disable');
-                    deleteNewsBtn.classList.remove('disable');
-                } else {
-                    showFeedbackMessage(false, 'ungespeicherte Änderungen');
-                }
+                headline.value = headline.oldVal;
+                content.value = content.oldVal;
+                checkbox.checked = checkbox.oldVal;
+
+                headline.classList.remove('active');
+                content.classList.remove('active');
+                checkbox.classList.remove('active');
+                
+                saveEditBtn.classList.add('disable');
+                cancelEditBtn.classList.add('disable');
+                startEditBtn.classList.remove('disable');
+                deleteNewsBtn.classList.remove('disable');
             }
         });
 
