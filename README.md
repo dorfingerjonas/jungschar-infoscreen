@@ -20,7 +20,7 @@ Während die Dateien herunterladen öffnen Sie ein Terminal Fenster, um zu sehen
 
 ``CMD + Leertaste`` und ``Terminal`` eingeben und mit ``Enter `` bestätigen.
 
-
+<br>
 
 Geben Sie ``node --version`` ein um zu überprüfen ob Sie ``nodeJS`` bereits installiert haben. 
 
