@@ -24,7 +24,7 @@ Während die Dateien herunterladen öffnen Sie ein Terminal Fenster, um zu sehen
 
 Geben Sie ``node --version`` ein um zu überprüfen ob Sie ``nodeJS`` bereits installiert haben. 
 
-Wenn Sie die Antwort ``v10`` oder eine höhere Nummer ist, können Sie den nächsten Schritt überspringen.
+Wenn Sie die Antwort ``v10.x.x`` oder eine höhere Versionsnummer ist, können Sie den nächsten Schritt überspringen.
 
 Öffnen Sie https://nodejs.org/ in einem Web-Browser und folgen Sie den Installationsanweisungen für die LTS Version. Wenn Sie diese Schritte absolviert haben können Sie erneut im Terminal ``node --version`` eingeben um sicherzustellen, dass die Installation erfolgreich war.
 
