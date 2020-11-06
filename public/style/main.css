@@ -3,10 +3,10 @@
     src: url(../font/Roboto-Regular.ttf) format('truetype');
 }
 
-  @font-face {
-    font-family: 'Roboto Thin';
-    src: url(../font/Roboto-Thin.ttf) format('truetype');
-  }
+@font-face {
+  font-family: 'Roboto Thin';
+  src: url(../font/Roboto-Thin.ttf) format('truetype');
+}
 
 body {
     width: 100vw;
