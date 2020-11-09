@@ -46,7 +46,9 @@ Steht am Ende dieses Fensters ``http://localhost:3000/`` ist Jungschar-Infoscree
 
 ## Kontakt
 
-> Kontakt Möglichkeiten
+E-Mail: jonas.dorfinger@gmx.at
+
+Telefonnummer auf Anfrage
 
 <hr>
 
