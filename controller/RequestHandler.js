@@ -22,14 +22,29 @@ class RequestHandler {
             const response = await fetch(url);
             const weather = await response.json();
 
-            return {
-                temp: weather.main.temp,
-                minTemp: weather.main.temp_min,
-                maxTemp: weather.main.temp_max,
-                speed: weather.wind.speed,
-                pressure: weather.main.pressure,
-                humidity: weather.main.humidity,
-                icon: weather.weather[0].icon
+            if (weather.cod !== 200) {
+                if (weather.message.includes('Invalid API key.')) {
+                    return {
+                        code: weather.cod,
+                        message: 'Ungültiger API Key. Bitte überprüfen Sie den Key in den Wetter Einstellungen.'
+                    }
+                } else if (weather.message.includes('city not found')) {
+                    return {
+                        code: weather.cod,
+                        message: 'Stadt konnte nicht gefunden werden. Bitte überprüfen Sie die Stadt in den Wetter Einstellungen.'
+                    }
+                }
+            } else {
+                return {
+                    code: weather.cod,
+                    temp: weather.main.temp,
+                    minTemp: weather.main.temp_min,
+                    maxTemp: weather.main.temp_max,
+                    speed: weather.wind.speed,
+                    pressure: weather.main.pressure,
+                    humidity: weather.main.humidity,
+                    icon: weather.weather[0].icon
+                };
             }
         }
     }
@@ -100,7 +115,8 @@ class RequestHandler {
     }
 
     async getCurrency() {
-        return await promisify(fs.readFile)('./data/currency.json', 'utf8');
+        const content = await promisify(fs.readFile)('./data/currency.json', 'utf8');
+        return content ? JSON.parse(content) : [];
     }
 
     async getCheckSvg() {

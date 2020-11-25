@@ -45,7 +45,8 @@ class NewsRepository {
     }
 
     async getAll() {
-        return JSON.parse(await promisify(fs.readFile)('./data/news.json', 'utf8'));
+        const content = await promisify(fs.readFile)('./data/news.json', 'utf8');
+        return content ? JSON.parse(content) : [];
     }
 }
 
