@@ -44,7 +44,7 @@ window.addEventListener('load', () => {
             parent.appendChild(detailedWrapper);
             parent.appendChild(overviewWrapper);
         } else {
-            parent.appendChild(createNoElementsMessage());
+            parent.appendChild(createNoElementsMessage(data.message));
         }
     });
 });

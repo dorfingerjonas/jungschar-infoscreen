@@ -28,9 +28,9 @@ function removeAllChildren(parent) {
     return false;
 }
 
-function createNoElementsMessage() {
+function createNoElementsMessage(message) {
     const text = document.createElement('p');
-    text.textContent = 'Keine Elemente vorhanden.';
+    text.textContent = message || 'Keine Elemente vorhanden.';
     text.style.color = 'red';
     
     return text;
