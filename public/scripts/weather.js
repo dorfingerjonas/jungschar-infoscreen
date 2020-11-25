@@ -7,7 +7,7 @@ window.addEventListener('load', () => {
     socket.on('weather', data => {
         removeAllChildren(parent);
 
-        if (data !== undefined && data !== null) {
+        if (data !== undefined && data !== null && data.code === 200) {
             const detailedWrapper = document.createElement('div');
             const overviewWrapper = document.createElement('div');
     

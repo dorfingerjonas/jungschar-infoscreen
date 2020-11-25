@@ -9,7 +9,7 @@ window.addEventListener('load', () => {
     socket.emit('request user svg', null);
 
     socket.on('currency', data => {
-        currency = JSON.parse(data).name;
+        currency = data.name;
     });
 
     socket.on('select workplace', job => {

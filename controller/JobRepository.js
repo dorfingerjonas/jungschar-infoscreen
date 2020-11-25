@@ -47,7 +47,8 @@ class JobRepository {
     }
 
     async getAll() {
-        return JSON.parse(await promisify(fs.readFile)('./data/jobs.json', 'utf8'));
+        const content = await promisify(fs.readFile)('./data/jobs.json', 'utf8');
+        return content ? JSON.parse(content) : [];
     }
 
     async updateCurrency(currency) {

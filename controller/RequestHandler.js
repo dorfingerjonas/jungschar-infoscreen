@@ -100,7 +100,8 @@ class RequestHandler {
     }
 
     async getCurrency() {
-        return await promisify(fs.readFile)('./data/currency.json', 'utf8');
+        const content = await promisify(fs.readFile)('./data/currency.json', 'utf8');
+        return content ? JSON.parse(content) : [];
     }
 
     async getCheckSvg() {

@@ -40,11 +40,13 @@ class WeatherRepository {
     }
 
     async getJSON() {
-        return JSON.parse(await promisify(fs.readFile)('./data/weatherapi.json', 'utf8'));
+        const content = await promisify(fs.readFile)('./data/weatherapi.json', 'utf8');
+        return content ? JSON.parse(content) : [];
     }
 
     async getCustomJSON() {
-        return JSON.parse(await promisify(fs.readFile)('./data/customWeather.json', 'utf8'));
+        const content = await promisify(fs.readFile)('./data/customWeather.json', 'utf8');
+        return content ? JSON.parse(content) : [];
     }
 
     async updateCustomWeather(weather) {
