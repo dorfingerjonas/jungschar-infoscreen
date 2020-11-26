@@ -360,8 +360,6 @@ window.addEventListener('load', () => {
             const startEditBtn = document.createElement('div');
             const saveEditBtn = document.createElement('div');
             const cancelEditBtn = document.createElement('div');
-
-            currency = JSON.parse(currency);
     
             input.type = 'text';
             input.readOnly = true;
