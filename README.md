@@ -65,25 +65,25 @@ Mit "Job Ansicht aktivieren" aktiviert die Job Ansicht im Präsentationsfenster.
 
 Die Vorschau weiter unten zeigt eine Vorschau an, wie das Präsentationsfenster ausschauen könnte. Das Präsentationsfenster ist nicht mit der Vorschau synchronisiert.
 
-![dashboard](.\docs\dashboard.png)
+![dashboard](./docs/dashboard.png)
 
 ### Job Verteilung
 
 In der Job Verteilung können Sie die Jobs verteilen. In diesem Fenster kann auch die Job Ansicht (de-)aktiviert werden. Sie können einen Arbeitsplatz vergeben indem Sie auf eine grüne Person klicken. Sie können mit dem "Zurücksetzen" Button alle Arbeitsplätze wieder freigeben.
 
-![job_verteilung](.\docs\job_verteilung.png)
+![job_verteilung](./docs/job_verteilung.png)
 
 ### Jobs bearbeiten
 
 Hier können Sie die Währung und die Jobs ändern. Um etwas zu bearbeiten klicken Sie auf den "Bearbeiten" Button. Um einen neuen Eintrag zu erstellen klicken Sie oben rechts auf den "Job erstellen" Button. Es öffnet sich ein Fenster wo Sie die Informationen eintragen können.
 
-![jobs_bearbeiten](.\docs\jobs_bearbeiten.png)
+![jobs_bearbeiten](./docs/jobs_bearbeiten.png)
 
 ### News bearbeiten
 
 News werden unten im Präsentationfenster angezeigt. Die News wechseln alle 10 Sekunden. Neue News können mit dem Button "News erstellen" erstellen.
 
-![news_bearbeiten](.\docs\news_bearbeiten.png)
+![news_bearbeiten](./docs/news_bearbeiten.png)
 
 ### Wetter bearbeiten
 
@@ -97,11 +97,11 @@ Um die aktuellen Wetterdaten ihrer Stadt zu erhalten geben Sie den Namen der Sta
 
 Um das lokale Wetter zu aktivieren müssen sie den Haken bei "Individuelles Wetter aktiv" setzen. Beachten Sie, dass Sie zuerst den Bearbeitungsmodus aktivieren. Anschließend können Sie individuelle Wetter Daten eintragen und das Icon auswählen.
 
-![wetter_bearbeiten](.\docs\wetter_bearbeiten.png)
+![wetter_bearbeiten](./docs/wetter_bearbeiten.png)
 
 ### Medieninhalte verwalten
 
-Hier können Sie die Videos uns Bilder welche angezeigt werden bearbeiten. Wenn Sie Medien hochladen werden die Bilder automatisch in den Bilder Abschnitt weiter unten verschoben und die Videos in den Video Abschnitt. Die Videos sind die am größten angezeigten Medien im Präsentationsfenster.![medien](.\docs\medien.png)
+Hier können Sie die Videos uns Bilder welche angezeigt werden bearbeiten. Wenn Sie Medien hochladen werden die Bilder automatisch in den Bilder Abschnitt weiter unten verschoben und die Videos in den Video Abschnitt. Die Videos sind die am größten angezeigten Medien im Präsentationsfenster.![medien](./docs/medien.png)
 
 ## Kontakt
 
