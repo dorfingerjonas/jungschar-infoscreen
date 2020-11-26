@@ -52,13 +52,16 @@ window.addEventListener('load', () => {
 function createNews(news) {
     const wrapper = document.createElement('div');
     const headline = document.createElement('h2');
-    const content = document.createElement('p');
 
     headline.textContent = news.headline;
-    content.textContent = news.content;
 
     wrapper.appendChild(headline);
-    wrapper.appendChild(content);
+
+    for (const line of news.content.split('\n')) {
+        const content = document.createElement('p');
+        content.textContent = line;
+        wrapper.appendChild(content);   
+    }
 
     return wrapper;
 }

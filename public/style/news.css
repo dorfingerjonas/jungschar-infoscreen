@@ -10,3 +10,7 @@
     width: 80%;
     font-size: 1.3vw;
 }
+
+#news p {
+    margin: .3em auto;
+}
