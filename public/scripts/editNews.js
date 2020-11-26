@@ -260,6 +260,7 @@ window.addEventListener('load', () => {
         createButton.addEventListener('click', () => {
             if (headline.value.trim() !== '') {
                 const news = {
+                    id: Date.now(),
                     headline: headline.value,
                     content: content.value,
                     isVisible: checkbox.checked
