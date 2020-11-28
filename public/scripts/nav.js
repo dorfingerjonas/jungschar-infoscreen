@@ -14,7 +14,7 @@ window.addEventListener('load', () => {
         const element = elements[i];
         
         element.nav.addEventListener('click', () => {
-            currentPageBar.style.left = `${i * currentPageBar.clientWidth}px`;
+            currentPageBar.style.left = `${i * 14.285}vw`;
             hideAll();
             element.screen.classList.remove('hide');
         });
