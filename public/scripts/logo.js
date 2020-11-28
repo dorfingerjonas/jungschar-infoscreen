@@ -11,7 +11,7 @@ window.addEventListener('load', () => {
         
         if (files.length === 1) {
             const img = document.createElement('img');
-            img.src = `../media/img/logos/${files[0]}`;
+            img.src = `../media/img/${files[0]}`;
             
             parent.appendChild(img);
 
