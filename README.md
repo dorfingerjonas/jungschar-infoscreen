@@ -8,11 +8,11 @@
 
 Für die Erstinstallation ist Internet erforderlich. 
 
-"Jungschar-Infoscreen" kann hier heruntergeladen werden.
+"Jungschar-Infoscreen" kann [hier](https://dorfingerjonas.at/jungschar-infoscreen/download) heruntergeladen werden.
 
 Während die Dateien herunterladen öffnen Sie ein Terminal-Fenster, um zu sehen, ob die Software bereits installiert ist oder nicht.
 
-**Terminal öffnen - Windows**:
+**Terminal öffnen - Windows**
 
 ``Win + R`` und ``cmd`` in das geöffnete Fenster eingeben, mit ``Enter`` bestätigen.
 
