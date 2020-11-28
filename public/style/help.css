@@ -1,0 +1,8 @@
+#help {
+    overflow: hidden !important;
+}
+
+#help iframe {
+    width: 100%;
+    height: 100%;
+}
