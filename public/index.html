@@ -3,7 +3,7 @@
 <head>
     <meta charset='UTF-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <title>Jungscharlager Infoscreen</title>
+    <title>Jungschar Infoscreen</title>
     <link rel='stylesheet' href='/favicon.ico'>
     <script src='./nav.js'></script>
     <script src='./main.js'></script>
@@ -19,6 +19,7 @@
     <link rel='stylesheet' href='job.css'>
     <link rel='stylesheet' href='main.css'>
     <link rel='stylesheet' href='edit.css'>
+    <link rel='stylesheet' href='help.css'>
     <link rel='stylesheet' href='adminMain.css'>
     <link rel='stylesheet' href='dashboard.css'>
     <link rel='stylesheet' href='manageMedia.css'>
@@ -33,6 +34,7 @@
         <span id='navEditNews'>News bearbeiten</span>
         <span id='navEditWeather'>Wetter bearbeiten</span>
         <span id='navMediaContent'>Medieninhalte verwalten</span>
+        <span id='navHelp'>Hilfe</span>
     </nav>
 
     <div id='currentPageBar'></div>
@@ -84,6 +86,10 @@
 
         <section id='editWeather' class='hide'>
             <div id='weatherWrapper'></div>
+        </section>
+
+        <section id='help' class='hide'>
+            <iframe src="./html/help.html" frameborder="0"></iframe>
         </section>
     </main>
 </body>

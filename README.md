@@ -1,5 +1,7 @@
 # Jungschar-Infoscreen
 
+[TOC]
+
 ## Beschreibung
 
 "Jungschar-Infoscreen" ist ein Software-Produkt, welches die Verwaltung und Durchführung einer Spielestadt oder ähnlichen Aktivitäten erleichtert. Es gibt eine Ansicht für Kinder, wo sie aktuelle Informationen, wie das Wetter, die aktuelle Uhrzeit oder Bilder der vergangenen Woche, ansehen können. Die Inhalte können von Kindern auch während der Aktion erstellt und bedient werden. "Jungschar-Infoscreen" richtet sich an GruppenleiterInnen und Kinder. Das Ziel ist es, bei der Organisation bzw. Durchführung unterstützt zu werden. Aufgebaut ist die ganze Anwendung in 2 Fenster, das Präsentationsfenster, in dem die Kinder den Inhalt sehen und das Verwaltungsfenster, in dem man die Inhalte verwalten und bearbeiten kann.
@@ -8,7 +10,7 @@
 
 Für die Erstinstallation ist Internet erforderlich. 
 
-"Jungschar-Infoscreen" kann hier heruntergeladen werden.
+"Jungschar-Infoscreen" kann [hier](https://dorfingerjonas.at/jungschar-infoscreen/download) heruntergeladen werden.
 
 Während die Dateien herunterladen öffnen Sie ein Terminal-Fenster, um zu sehen, ob die Software bereits installiert ist oder nicht.
 
@@ -34,7 +36,7 @@ In der Zwischenzeit sollten die Dateien heruntergeladen sein. Entpacken Sie den 
 
 ![start](./docs/start.png)
 
-Steht am Ende dieses Fensters ``http://localhost:3000/`` ist "Jungschar-Infoscreen" erfolgreich installiert und gestartet. Sie können nun im Browser ``http://localhost:3000/`` aufrufen und "Jungschar-Infoscreen" verwenden.
+Steht am Ende dieses Fensters ``http://localhost:3000/`` ist "Jungschar-Infoscreen" erfolgreich installiert und gestartet. Sie können nun im Browser ``http://localhost:3000/`` aufrufen und "Jungschar-Infoscreen" verwenden. Es wird empfohlen als Webbrowser Google Chrome zu verwenden.
 
 **Achtung:** Dieses Fenster darf nicht geschlossen werden, solange der "Jungschar-Infoscreen" verwendet werden soll. Wenn dieses Fenster geschlossen wird, funktioniert die Software nicht mehr. Wenn Sie das Fenster geschlossen haben, können Sie es wieder mit einem Doppelklick auf die ``start.cmd`` - Datei öffnen.
 
@@ -52,6 +54,7 @@ Die Software ist auf mehrere Unterpunkte aufgeteilt:
 - News bearbeiten
 - Wetter bearbeiten
 - Medieninhalte verwalten
+- Hilfe
 
 ### Dashboard
 
@@ -112,6 +115,10 @@ Ja und nein, grundsätzlich ist das Programm so konzeptioniert, dass es ohne ein
 ### Können Kosten anfallen?
 
 Nein, "Jungschar-Infoscreen" ist zu 100% kostenfrei.
+
+### Welchen Plattformen werden unterstützt?
+
+"Jungschar-Infoscreen" funktioniert auf allen Windows, Linux und macOS, es wird zusätzlich empfohlen den Chrome-Webbrowser zu verwenden.
 
 
 
