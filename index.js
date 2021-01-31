@@ -1,10 +1,42 @@
+const {app, BrowserWindow} = require('electron')
 const express = require('express');
-const app = express();
-const http = require('http').createServer(app);
+const expressApp = express();
+const http = require('http').createServer(expressApp);
 const io = require('socket.io')(http);
 const schedule = require('node-schedule');
 const formidable = require('formidable');
 const fs = require('fs');
+
+function createWindow () {
+  const mainWindow = new BrowserWindow({
+    width: 1160,
+    height: 740,
+    autoHideMenuBar: true,
+    webPreferences: {
+        nodeIntegration: true
+    }
+  });
+
+  mainWindow.loadURL('http://localhost:42069/');
+  mainWindow.focus();
+}
+
+app.whenReady().then(() => {
+  expressApp.get('/', (req, res) => {
+    res.sendFile(__dirname + '/index.html');
+  });
+
+  createWindow();
+  
+  app.on('activate', () => {
+    if (BrowserWindow.getAllWindows().length === 0) createWindow();
+  });
+});
+
+app.on('window-all-closed', () => {
+  if (process.platform !== 'darwin')
+    app.quit()
+});
 
 const RequestHandler = require('./controller/RequestHandler');
 const NewsRepository = require('./controller/NewsRepository');
@@ -15,16 +47,16 @@ const jobRepo = new JobRepository();
 const weatherRepo = new WeatherRepository();
 const reqHandler = new RequestHandler();
 
-app.use(express.static('public'));
-app.use(express.static('public/font'));
-app.use(express.static('public/icons'));
-app.use(express.static('public/style'));
-app.use(express.static('public/scripts'));
-app.use(express.static('public/media/img'));
-app.use(express.static('public/media/video'));
-app.use(express.static('public/presentation'));
+expressApp.use(express.static(__dirname + '/public'));
+expressApp.use(express.static(__dirname + '/public/font'));
+expressApp.use(express.static(__dirname + '/public/icons'));
+expressApp.use(express.static(__dirname + '/public/style'));
+expressApp.use(express.static(__dirname + '/public/scripts'));
+expressApp.use(express.static(__dirname + '/public/media/img'));
+expressApp.use(express.static(__dirname + '/public/media/video'));
+expressApp.use(express.static(__dirname + '/public/presentation'));
 
-app.post('/fileupload', (req, res) => {
+expressApp.post('/fileupload', (req, res) => {
     const form = new formidable.IncomingForm();
 
     form.parse(req, (err, fields, files) => {
@@ -204,6 +236,6 @@ io.on('connection', (socket) => {
     });
 });
 
-http.listen(3000, () => {
-    console.log('http://localhost:3000/');
+http.listen(42069, () => {
+    console.log('http://localhost:42069/');
 });
