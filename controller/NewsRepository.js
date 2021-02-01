@@ -1,52 +1,34 @@
-const fs = require('fs');
-const { promisify } = require('util');
+const Datastore = require('nedb');
+const db = new Datastore({
+    filename: __dirname.replace('controller', 'data/news.db'),
+    autoload: true
+});
 
 class NewsRepository {
     async add(news) {
-        const currentFile = await this.getAll();
-
-        currentFile.push(news);
-
-        fs.writeFile('./data/news.json', JSON.stringify(currentFile), err => {
-            if (err) {
-                console.error(err);
-            }
-        });
+        db.insert(news);
     }
 
     async update(news) {
-        const newsList = await this.getAll();
-        
-        newsList[newsList.findIndex(r => r.id === news.id)] = news;
-
-        fs.writeFile('./data/news.json', JSON.stringify(newsList), err => {
-            if (err) {
-                console.error(err);
-            }
-        });
+        db.update({
+            _id: news._id
+        }, news);
     }
 
     async delete(news) {
-        const currentFile = await this.getAll();
-        
-        fs.writeFile('./data/news.json', JSON.stringify(currentFile.filter(r => r.id !== news.id)), err => {
-            if (err) {
-                console.error(err);
-            }
+        db.remove({
+            _id: news._id
         });
     }
 
     deleteAll() {
-        fs.writeFile('./data/news.json', JSON.stringify([]), err => {
-            if (err) {
-                console.error(err);
-            }
+        db.remove({}, {
+            multi: true
         });
     }
 
     async getAll() {
-        const content = await promisify(fs.readFile)('./data/news.json', 'utf8');
-        return content ? JSON.parse(content) : [];
+        return db.getAllData() || [];
     }
 }
 
