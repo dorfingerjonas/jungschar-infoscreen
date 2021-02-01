@@ -290,5 +290,6 @@ $RECYCLE.BIN/
 
 # data files
 data/*.json
+*.db
 
 # End of https://www.toptal.com/developers/gitignore/api/linux,windows,macos,node,jetbrains,visualstudiocode
