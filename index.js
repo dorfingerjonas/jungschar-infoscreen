@@ -65,9 +65,9 @@ expressApp.post('/fileupload', (req, res) => {
             let newPath;
     
             if (files.filetoupload.type.includes('video')) {
-                newPath = `./public/media/video/${files.filetoupload.name}`;
+                newPath = `${__dirname}/public/media/video/${files.filetoupload.name}`;
             } else if (files.filetoupload.type.includes('image')) {
-                newPath = `./public/media/img/${files.filetoupload.name}`;
+                newPath = `${__dirname}/public/media/img/${files.filetoupload.name}`;
             }
     
             fs.rename(oldPath, newPath, err => {

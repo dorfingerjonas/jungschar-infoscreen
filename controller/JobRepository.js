@@ -1,6 +1,9 @@
 const fs = require('fs');
 const { promisify } = require('util');
 
+const jobsFilePath = __dirname.replace('controller', 'data/jobs.json');
+const currencyFilePath = __dirname.replace('controller', 'data/currency.json');
+
 class JobRepository {
    async add(job) {
         const currentFile = await this.getAll();
@@ -9,7 +12,7 @@ class JobRepository {
 
         currentFile.push(job);
 
-        fs.writeFile('./data/jobs.json', JSON.stringify(currentFile), err => {
+        fs.writeFile(jobsFilePath, JSON.stringify(currentFile), err => {
             if (err) {
                 console.error(err);
             }
@@ -21,7 +24,7 @@ class JobRepository {
         
         jobList[jobList.findIndex(r => r.id === job.id)] = job;
 
-        fs.writeFile('./data/jobs.json', JSON.stringify(jobList), err => {
+        fs.writeFile(jobsFilePath, JSON.stringify(jobList), err => {
             if (err) {
                 console.error(err);
             }
@@ -31,7 +34,7 @@ class JobRepository {
     async delete(job) {
         const currentFile = await this.getAll();
 
-        fs.writeFile('./data/jobs.json', JSON.stringify(currentFile.filter(r => r.id !== job.id)), err => {
+        fs.writeFile(jobsFilePath, JSON.stringify(currentFile.filter(r => r.id !== job.id)), err => {
             if (err) {
                 console.error(err);
             }
@@ -39,7 +42,7 @@ class JobRepository {
     }
 
     deleteAll() {
-        fs.writeFile('./data/jobs.json', JSON.stringify([]), err => {
+        fs.writeFile(jobsFilePath, JSON.stringify([]), err => {
             if (err) {
                 console.error(err);
             }
@@ -47,12 +50,17 @@ class JobRepository {
     }
 
     async getAll() {
-        const content = await promisify(fs.readFile)('./data/jobs.json', 'utf8');
+        const content = await promisify(fs.readFile)(jobsFilePath, 'utf8');
+        return content ? JSON.parse(content) : [];
+    }
+
+    async getCurrency() {
+        const content = await promisify(fs.readFile)(currencyFilePath, 'utf8');
         return content ? JSON.parse(content) : [];
     }
 
     async updateCurrency(currency) {
-        await promisify(fs.writeFile)('./data/currency.json', JSON.stringify(currency), err => {
+        await promisify(fs.writeFile)(currencyFilePath, JSON.stringify(currency), err => {
             if (err) {
                 console.error(err);
             }
