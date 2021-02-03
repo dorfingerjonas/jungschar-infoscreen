@@ -1,4 +1,4 @@
-const {app, BrowserWindow} = require('electron')
+const {app, BrowserWindow} = require('electron');
 const express = require('express');
 const expressApp = express();
 const http = require('http').createServer(expressApp);
@@ -6,47 +6,18 @@ const io = require('socket.io')(http);
 const schedule = require('node-schedule');
 const formidable = require('formidable');
 const fs = require('fs');
-
-function createWindow () {
-  const mainWindow = new BrowserWindow({
-    width: 1160,
-    height: 740,
-    autoHideMenuBar: true,
-    webPreferences: {
-        nodeIntegration: true
-    }
-  });
-
-  mainWindow.loadURL('http://localhost:42069/');
-  mainWindow.focus();
-}
-
-app.whenReady().then(() => {
-  expressApp.get('/', (req, res) => {
-    res.sendFile(__dirname + '/index.html');
-  });
-
-  createWindow();
-  
-  app.on('activate', () => {
-    if (BrowserWindow.getAllWindows().length === 0) createWindow();
-  });
-});
-
-app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin')
-    app.quit()
-});
 const getPort = require('get-port');
 
 const RequestHandler = require('./controller/RequestHandler');
 const NewsRepository = require('./controller/NewsRepository');
 const JobRepository = require('./controller/JobRepository');
 const WeatherRepository = require('./controller/WeatherRepository');
+
 const newsRepo = new NewsRepository();
 const jobRepo = new JobRepository();
 const weatherRepo = new WeatherRepository();
 const reqHandler = new RequestHandler();
+const settings = {};
 
 expressApp.use(express.static(__dirname + '/public'));
 expressApp.use(express.static(__dirname + '/public/font'));
@@ -57,6 +28,48 @@ expressApp.use(express.static(__dirname + '/public/media/img'));
 expressApp.use(express.static(__dirname + '/public/media/video'));
 expressApp.use(express.static(__dirname + '/public/presentation'));
 
+(async () => {
+    settings.port = await getPort();
+
+    http.listen(settings.port, () => {
+        console.log(`http://localhost:${settings.port}/`);
+    });
+
+    app.whenReady().then(() => {
+        expressApp.get('/', (req, res) => {
+            res.sendFile(__dirname + '/src/index.html');
+        });
+
+        createWindow();
+
+        app.on('activate', () => {
+            if (BrowserWindow.getAllWindows().length === 0)
+                createWindow();
+        });
+    });
+})();
+
+app.on('window-all-closed', () => {
+  if (process.platform !== 'darwin')
+    app.quit();
+});
+
+function createWindow () {
+    const mainWindow = new BrowserWindow({
+      width: 1160,
+      height: 740,
+      autoHideMenuBar: true,
+      webPreferences: {
+          nodeIntegration: true,
+          contextIsolation: true
+      },
+    });
+
+    mainWindow.loadURL(`http://localhost:${settings.port}/`);
+    mainWindow.webContents.openDevTools();
+    mainWindow.focus();
+}
+
 expressApp.post('/fileupload', (req, res) => {
     const form = new formidable.IncomingForm();
 
@@ -64,13 +77,13 @@ expressApp.post('/fileupload', (req, res) => {
         if (files.filetoupload !== undefined) {
             const oldPath = files.filetoupload.path;
             let newPath;
-    
+
             if (files.filetoupload.type.includes('video')) {
                 newPath = `${__dirname}/public/media/video/${files.filetoupload.name}`;
             } else if (files.filetoupload.type.includes('image')) {
                 newPath = `${__dirname}/public/media/img/${files.filetoupload.name}`;
             }
-    
+
             fs.rename(oldPath, newPath, err => {
                 if (err) {
                     console.error(err.message);
@@ -110,7 +123,7 @@ io.on('connection', (socket) => {
     socket.on('request news', async () => {
         io.emit('news', await reqHandler.getNews());
     });
-    
+
     socket.on('request jobs', async () => {
         io.emit('jobs', await reqHandler.getJobs());
     });
@@ -142,7 +155,7 @@ io.on('connection', (socket) => {
     socket.on('update news', news => {
         newsRepo.update(news);
     });
-    
+
     socket.on('delete news', news => {
         newsRepo.delete(news);
     });
@@ -162,7 +175,7 @@ io.on('connection', (socket) => {
     socket.on('update job', job => {
         jobRepo.update(job);
     });
-    
+
     socket.on('delete job', job => {
         jobRepo.delete(job);
     });
@@ -185,7 +198,7 @@ io.on('connection', (socket) => {
 
     socket.on('update currency', async (currency) => {
         await jobRepo.updateCurrency(currency);
-        socket.emit('currency updated', null);        
+        socket.emit('currency updated', null);
     });
 
     socket.on('get all videos', async () => {
@@ -231,12 +244,8 @@ io.on('connection', (socket) => {
     socket.on('update custom weather', weather => {
         weatherRepo.updateCustomWeather(weather);
     });
-    
+
     socket.on('presentation started', () => {
         io.emit('presentation state changed', true);
     });
-});
-
-http.listen(42069, () => {
-    console.log('http://localhost:42069/');
 });
