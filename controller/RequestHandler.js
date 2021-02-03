@@ -1,9 +1,8 @@
-const fs = require('fs');
-const { promisify } = require('util');
 const fetch = require('node-fetch');
 const NewsRepository = require('./NewsRepository');
 const JobRepository = require('./JobRepository');
 const WeatherRepository = require('./WeatherRepository');
+const MediaRepository = require('./MediaRepository');
 
 class RequestHandler {
     getTime() {
@@ -14,11 +13,13 @@ class RequestHandler {
         const customWeather = await this.getCustomWeather();
 
         if (customWeather.active) {
+            customWeather.code = 200;
+
             return customWeather;
         } else {
-            const api = JSON.parse(await promisify(fs.readFile)('./data/weatherapi.json', 'utf8'));
+            const api = await new WeatherRepository().getJSON();
             const url = `${api.url}?q=${api.city}&appid=${api.apiKey}&units=${api.units}`;
-    
+
             const response = await fetch(url);
             const weather = await response.json();
 
@@ -50,56 +51,23 @@ class RequestHandler {
     }
 
     async getLogos() {
-        const files = await promisify(fs.readdir)('./public/media/img');
-        const response = [];
-
-        for (const file of files) {
-            if (/.(jpeg|jpg|jfif|pjpeg|pjp|gif|png|svg)/i.test(file)) {
-                response.push(file);
-            }
-        }
-
-        return response;
+        return await new MediaRepository().getLogos();
     }
 
     async deleteVideo(filename) {
-        fs.unlink(`./public/media/video/${filename}`, err => {
-            if (err) {
-                console.error(err);
-            }
-        });
+        await new MediaRepository().deleteVideo(filename);
     }
 
     async deleteImage(filename) {
-        fs.unlink(`./public/media/img/${filename}`, err => {
-            if (err) {
-                console.error(err);
-            }
-        });
+        await new MediaRepository().deleteImage(filename);
     }
 
     async getImages() {
-        const files = await promisify(fs.readdir)('./public/media/img');
-        const response = [];
-
-        for (const file of files) {
-            response.push(file);
-        }
-
-        return response;
+        return await new MediaRepository().getImages();
     }
 
     async getVideos() {
-        const files = await promisify(fs.readdir)('./public/media/video')
-        const response = [];
-
-        for (const file of files) {
-            if (file.toLowerCase().endsWith('.mp4') || file.toLowerCase().endsWith('.m4v')) {
-                response.push(file);
-            }
-        }
-
-        return response;
+        return await new MediaRepository().getVideos();
     }
 
     async getNews() {
@@ -111,20 +79,19 @@ class RequestHandler {
     }
 
     async getUserSvg() {
-        return await promisify(fs.readFile)('./public/icons/user.svg', 'utf8');
+        return await new MediaRepository().getUserSvg();
     }
 
     async getCurrency() {
-        const content = await promisify(fs.readFile)('./data/currency.json', 'utf8');
-        return content ? JSON.parse(content) : [];
+        return await new JobRepository().getCurrency();
     }
 
     async getCheckSvg() {
-        return await promisify(fs.readFile)('./public/icons/check.svg', 'utf8');
+        return await new MediaRepository().getCheckSvg();
     }
 
     async getCrossSvg() {
-        return await promisify(fs.readFile)('./public/icons/cross.svg', 'utf8');
+        return await new MediaRepository().getCrossSvg();
     }
 
     async getApiInfos() {
