@@ -1,26 +1,29 @@
 window.addEventListener('load', () => {
     const parent = document.getElementById('weatherWrapper');
     const socket = getSocket();
+    let customWeatherData;
 
     socket.emit('get api infos', null);
 
-    printShortcutButtons();
-
     socket.on('api infos', data => {
+        removeAllChildren(parent);
+
         socket.emit('get custom weather', null);
 
-        printCity(data.city);
-        printApiKey(data.apiKey);
+        printShortcutButtons();
+        printCity(data);
+        printApiKey(data);
     });
 
     socket.on('customWeather', data => {
         socket.emit('get weather icons', null);
+        customWeatherData = data;
 
-        printChangeState(data.active);
+        printChangeState(data);
+    });
 
-        socket.on('weather icons', icons => {
-            printModifyCustomWeather(icons, data);
-        });
+    socket.on('weather icons', icons => {
+        printModifyCustomWeather(icons, customWeatherData);
     });
 
     function printShortcutButtons() {
