@@ -15,6 +15,8 @@ window.addEventListener('load', () => {
                 video.play();
             });
 
+            video.play();
+
             parent.appendChild(video);
         } else if (files.length >= 2) {
             for (let i = 0; i < files.length; i++) {
@@ -31,6 +33,8 @@ window.addEventListener('load', () => {
                 }
 
                 parent.appendChild(video);
+
+                resize();
             }
         } else {
             parent.appendChild(createNoElementsMessage());
@@ -47,12 +51,27 @@ window.addEventListener('load', () => {
             videos[videos.length - 1].src = rack;
             
             videos[0].play();
+            resize();
 
             videos[0].addEventListener('endend', () => {
                 next();
             });
         }
     });
+
+    window.addEventListener('resize', resize);
+
+    function resize() {
+        const firstVideo = parent.firstChild;
+
+        if (parent.clientHeight > firstVideo.clientHeight) {
+            firstVideo.style.height = '100%';
+            firstVideo.style.width = 'unset';
+        } else if (parent.clientWidth > firstVideo.clientWidth) {
+            firstVideo.style.width = '100%';
+            firstVideo.style.height = 'unset';
+        }
+    }
 });
 
 function createVideo(file) {

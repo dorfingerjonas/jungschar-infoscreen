@@ -11,7 +11,7 @@ window.addEventListener('load', () => {
         
         if (files.length === 1) {
             const img = document.createElement('img');
-            img.src = `../media/img/${files[0]}`;
+            img.src = `/${files[0]}`;
             
             parent.appendChild(img);
 
@@ -21,7 +21,7 @@ window.addEventListener('load', () => {
         } else if (files.length >= 2) {
             for (let i = 0; i < files.length; i++) {
                 const img = document.createElement('img');
-                img.src = `../media/img/${files[i]}`;
+                img.src = `/${files[i]}`;
                 
                 if (i !== 0) img.classList.add('hide');
                 
@@ -63,7 +63,8 @@ window.addEventListener('load', () => {
 
 function resizeImage(img) {
     if (img.clientHeight > img.clientWidth
-        || img.clientHeight + 50 > img.clientWidth && img.clientHeight - 50 < img.clientWidth
+        || img.clientHeight + 50 > img.clientWidth
+        && img.clientHeight - 50 < img.clientWidth
         || img.clientHeight === img.clientWidth) {
         img.style.width = '40%';
     } else {
