@@ -40,8 +40,6 @@ window.addEventListener('load', () => {
 
         refresh.addEventListener('click', () => {
             socket.emit('get api infos', null);
-            socket.emit('get custom weather', null);
-            socket.emit('get weather icons', null);
             showFeedbackMessage(true, 'Wetter aktualisiert');
         });
 
@@ -55,7 +53,7 @@ window.addEventListener('load', () => {
         parent.appendChild(newButtonBar);
     }
 
-    function printCity(city) {
+    function printCity({ id, city }) {
         const cityWrapper = document.createElement('div');
         const row = document.createElement('div');
         const inputWrapper = document.createElement('div');
@@ -77,13 +75,13 @@ window.addEventListener('load', () => {
         saveEditBtn.classList.add('disable');
         cancelEditBtn.classList.add('disable');
 
-        startEditBtn.addEventListener('click', () => {                
+        startEditBtn.addEventListener('click', () => {
             if (!startEditBtn.className.includes('disable')) {
                 input.readOnly = false;
                 input.classList.add('active');
 
                 input.oldVal = input.value;
-                
+
                 startEditBtn.classList.add('disable');
                 saveEditBtn.classList.remove('disable');
                 cancelEditBtn.classList.remove('disable');
@@ -95,7 +93,7 @@ window.addEventListener('load', () => {
                 input.value = input.oldVal;
                 input.readOnly = true;
                 input.classList.remove('active');
-                
+
                 saveEditBtn.classList.add('disable');
                 cancelEditBtn.classList.add('disable');
                 startEditBtn.classList.remove('disable');
@@ -107,11 +105,11 @@ window.addEventListener('load', () => {
                 if (input.value.trim() !== '') {
                     input.readOnly = true;
                     input.classList.remove('active');
-                    
+
                     saveEditBtn.classList.add('disable');
                     cancelEditBtn.classList.add('disable');
                     startEditBtn.classList.remove('disable');
-                    
+
                     socket.emit('update city', input.value);
 
                     showFeedbackMessage(true, 'Stadt aktualisiert');
@@ -126,7 +124,7 @@ window.addEventListener('load', () => {
         cityWrapper.setAttribute('id', 'cityWrapper');
         inputWrapper.classList.add('inputWrapper');
         buttonWrapper.classList.add('buttonWrapper');
-        
+
         inputWrapper.appendChild(input);
         buttonWrapper.appendChild(startEditBtn);
         buttonWrapper.appendChild(saveEditBtn);
@@ -136,7 +134,7 @@ window.addEventListener('load', () => {
         parent.appendChild(row);
     }
 
-    function printApiKey(key) {
+    function printApiKey({id, apiKey}) {
         const apiWrapper = document.createElement('div');
         const row = document.createElement('div');
         const inputWrapper = document.createElement('div');
@@ -148,7 +146,7 @@ window.addEventListener('load', () => {
 
         input.type = 'text';
         input.readOnly = true;
-        input.value = key;
+        input.value = apiKey;
         input.placeholder = 'API-Key';
 
         startEditBtn.textContent = 'Bearbeiten';
@@ -158,13 +156,13 @@ window.addEventListener('load', () => {
         saveEditBtn.classList.add('disable');
         cancelEditBtn.classList.add('disable');
 
-        startEditBtn.addEventListener('click', () => {                
+        startEditBtn.addEventListener('click', () => {
             if (!startEditBtn.className.includes('disable')) {
                 input.readOnly = false;
                 input.classList.add('active');
 
                 input.oldVal = input.value;
-                
+
                 startEditBtn.classList.add('disable');
                 saveEditBtn.classList.remove('disable');
                 cancelEditBtn.classList.remove('disable');
@@ -176,7 +174,7 @@ window.addEventListener('load', () => {
                 input.value = input.oldVal;
                 input.readOnly = true;
                 input.classList.remove('active');
-                
+
                 saveEditBtn.classList.add('disable');
                 cancelEditBtn.classList.add('disable');
                 startEditBtn.classList.remove('disable');
@@ -188,11 +186,11 @@ window.addEventListener('load', () => {
                 if (input.value.trim() !== '') {
                     input.readOnly = true;
                     input.classList.remove('active');
-                    
+
                     saveEditBtn.classList.add('disable');
                     cancelEditBtn.classList.add('disable');
                     startEditBtn.classList.remove('disable');
-                    
+
                     socket.emit('update apiKey', input.value);
 
                     showFeedbackMessage(true, 'API-Key aktualisiert');
@@ -207,7 +205,7 @@ window.addEventListener('load', () => {
         apiWrapper.setAttribute('id', 'apiWrapper');
         inputWrapper.classList.add('inputWrapper');
         buttonWrapper.classList.add('buttonWrapper');
-        
+
         inputWrapper.appendChild(input);
         buttonWrapper.appendChild(startEditBtn);
         buttonWrapper.appendChild(saveEditBtn);
@@ -230,7 +228,7 @@ window.addEventListener('load', () => {
 
         input.type = 'checkbox';
         input.readOnly = true;
-        input.checked = state;
+        input.checked = state.active;
 
         input.setAttribute('id', 'customWeatherActive');
 
@@ -249,13 +247,13 @@ window.addEventListener('load', () => {
         saveEditBtn.classList.add('disable');
         cancelEditBtn.classList.add('disable');
 
-        startEditBtn.addEventListener('click', () => {                
+        startEditBtn.addEventListener('click', () => {
             if (!startEditBtn.className.includes('disable')) {
                 input.readOnly = false;
                 input.classList.add('active');
 
                 input.oldVal = input.checked;
-                
+
                 startEditBtn.classList.add('disable');
                 saveEditBtn.classList.remove('disable');
                 cancelEditBtn.classList.remove('disable');
@@ -267,7 +265,7 @@ window.addEventListener('load', () => {
                 input.checked = input.oldVal;
                 input.readOnly = true;
                 input.classList.remove('active');
-                
+
                 saveEditBtn.classList.add('disable');
                 cancelEditBtn.classList.add('disable');
                 startEditBtn.classList.remove('disable');
@@ -278,11 +276,11 @@ window.addEventListener('load', () => {
             if (!saveEditBtn.className.includes('disable')) {
                 input.readOnly = true;
                 input.classList.remove('active');
-                
+
                 saveEditBtn.classList.add('disable');
                 cancelEditBtn.classList.add('disable');
                 startEditBtn.classList.remove('disable');
-                
+
                 socket.emit('update weather state', input.checked);
 
                 showFeedbackMessage(true, 'Individuelles Wetter aktualisiert');
@@ -294,7 +292,7 @@ window.addEventListener('load', () => {
         stateWrapper.setAttribute('id', 'stateWrapper');
         inputWrapper.classList.add('inputWrapper');
         buttonWrapper.classList.add('buttonWrapper');
-        
+
         inputWrapper.appendChild(label);
         inputWrapper.appendChild(input);
         buttonWrapper.appendChild(startEditBtn);
@@ -340,10 +338,10 @@ window.addEventListener('load', () => {
                 if (iconWrapper.active) {
                     for (let i = 0; i < img.parentElement.childElementCount; i++) {
                         const element = img.parentElement.children[i];
-                        
+
                         element.classList.remove('selectedWeatherIcon');
                     }
-    
+
                     img.classList.add('selectedWeatherIcon');
                 }
             });
@@ -357,7 +355,7 @@ window.addEventListener('load', () => {
             const newInput = document.createElement('div');
             const elm = document.createElement('input');
             const label = document.createElement('label');
-            
+
             elm.type = input.type;
             elm.value = input.value;
             elm.placeholder = input.placeholder;
@@ -379,17 +377,17 @@ window.addEventListener('load', () => {
         saveEditBtn.classList.add('disable');
         cancelEditBtn.classList.add('disable');
 
-        startEditBtn.addEventListener('click', () => {                
+        startEditBtn.addEventListener('click', () => {
             if (!startEditBtn.className.includes('disable')) {
                 for (const input of inputs) {
                     input.elm.readOnly = false;
-                    input.elm.oldVal = input.elm.value;   
+                    input.elm.oldVal = input.elm.value;
                     input.elm.classList.add('active');
                 }
 
                 iconWrapper.oldVal = `weatherIcon${weatherData.icon}.svg`;
                 iconWrapper.active = true;
-                
+
                 startEditBtn.classList.add('disable');
                 saveEditBtn.classList.remove('disable');
                 cancelEditBtn.classList.remove('disable');
@@ -401,12 +399,12 @@ window.addEventListener('load', () => {
                 for (const input of inputs) {
                     input.elm.readOnly = true;
                     input.elm.value = input.elm.oldVal;
-                    input.elm.classList.remove('active');   
+                    input.elm.classList.remove('active');
                 }
 
                 document.getElementById(iconWrapper.oldVal).click();
                 iconWrapper.active = false;
-                
+
                 saveEditBtn.classList.add('disable');
                 cancelEditBtn.classList.add('disable');
                 startEditBtn.classList.remove('disable');
@@ -419,13 +417,13 @@ window.addEventListener('load', () => {
                     input.elm.readOnly = true;
                     input.elm.classList.remove('active');
 
-                    if (input.elm.value.trim() === '') {    
+                    if (input.elm.value.trim() === '') {
                         input.elm.value = 0;
                     }
                 }
 
                 iconWrapper.active = false;
-                
+
                 saveEditBtn.classList.add('disable');
                 cancelEditBtn.classList.add('disable');
                 startEditBtn.classList.remove('disable');
@@ -440,7 +438,7 @@ window.addEventListener('load', () => {
                     humidity: document.getElementById('inputHumidity').value,
                     icon: document.getElementsByClassName('selectedWeatherIcon')[0].id.replace('weatherIcon', '').substring(0, 2)
                 };
-                
+
                 socket.emit('update custom weather', customWeather);
 
                 showFeedbackMessage(true, 'Individuelles Wetter aktualisiert');
