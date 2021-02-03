@@ -407,8 +407,8 @@ window.addEventListener('load', () => {
                         saveEditBtn.classList.add('disable');
                         cancelEditBtn.classList.add('disable');
                         startEditBtn.classList.remove('disable');
-                        
-                        socket.emit('update currency', {name: input.value});
+
+                        socket.emit('update currency', input.value);
                         socket.on('currency updated', () => {
                             socket.emit('get all jobs', null);
                             socket.emit('request currency', null);
@@ -526,6 +526,7 @@ window.addEventListener('load', () => {
         createButton.addEventListener('click', () => {
             if (headline.value.trim() !== '') {
                 const job = {
+                    id: Date.now(),
                     name: headline.value,
                     amount: parseInt(amount.textContent),
                     salary: parseInt(salary.textContent),
