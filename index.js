@@ -37,6 +37,7 @@ app.on('window-all-closed', () => {
   if (process.platform !== 'darwin')
     app.quit()
 });
+const getPort = require('get-port');
 
 const RequestHandler = require('./controller/RequestHandler');
 const NewsRepository = require('./controller/NewsRepository');
