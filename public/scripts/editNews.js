@@ -113,7 +113,7 @@ window.addEventListener('load', () => {
                     deleteNewsBtn.classList.remove('disable');
                     
                     const newsToUpdate = {
-                        _id: news._id,
+                        id: news.id,
                         headline: headline.value,
                         content: content.value,
                         isVisible: checkbox.checked
@@ -129,7 +129,7 @@ window.addEventListener('load', () => {
 
         deleteNewsBtn.addEventListener('click', () => {
             const newsToDelete = {
-                _id: news._id,
+                id: news.id,
                 headline: headline.value,
                 content: content.value,
                 isVisible: checkbox.checked
@@ -260,7 +260,7 @@ window.addEventListener('load', () => {
         createButton.addEventListener('click', () => {
             if (headline.value.trim() !== '') {
                 const news = {
-                    _id: Date.now(),
+                    id: Date.now(),
                     headline: headline.value,
                     content: content.value,
                     isVisible: checkbox.checked
