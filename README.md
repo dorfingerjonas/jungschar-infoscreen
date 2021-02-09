@@ -12,33 +12,7 @@ Für die Erstinstallation ist Internet erforderlich.
 
 "Jungschar-Infoscreen" kann [hier](https://dorfingerjonas.at/jungschar-infoscreen/download) heruntergeladen werden.
 
-Während die Dateien herunterladen öffnen Sie ein Terminal-Fenster, um zu sehen, ob die Software bereits installiert ist oder nicht.
-
-**Terminal öffnen - Windows**:
-
-``Win + R`` und ``cmd`` in das geöffnete Fenster eingeben, mit ``Enter`` bestätigen.
-
-**Terminal öffnen - macOS**
-
-``CMD + Leertaste`` und ``Terminal`` in die Suchleiste eingeben, mit ``Enter `` bestätigen.
-
-<br>
-
-Geben Sie ``node --version`` ein, um zu überprüfen ob Sie ``nodeJS`` bereits installiert haben. 
-
-Wenn Sie die Antwort ``v10.x.x`` oder eine höhere Versionsnummer ist, können Sie den nächsten Schritt überspringen.
-
-> Info: ``x`` steht in diesem Fall für eine beliebige Zahl
-
-Öffnen Sie https://nodejs.org/ in einem Web-Browser und folgen Sie den Installationsanweisungen für die LTS Version. Wenn Sie diese Schritte absolviert haben, können Sie erneut im Terminal ``node --version`` eingeben, um sicherzustellen, dass die Installation erfolgreich war.
-
-In der Zwischenzeit sollten die Dateien heruntergeladen sein. Entpacken Sie den Ordner nun an Ihrer gewünschten Stelle. Anschließend öffnen Sie das Verzeichnis und führen die ``start.cmd`` Datei mit einem Doppelklick aus. 
-
-![start](./docs/start.png)
-
-Steht am Ende dieses Fensters ``http://localhost:3000/`` ist "Jungschar-Infoscreen" erfolgreich installiert und gestartet. Sie können nun im Browser ``http://localhost:3000/`` aufrufen und "Jungschar-Infoscreen" verwenden. Es wird empfohlen als Webbrowser Google Chrome zu verwenden.
-
-**Achtung:** Dieses Fenster darf nicht geschlossen werden, solange der "Jungschar-Infoscreen" verwendet werden soll. Wenn dieses Fenster geschlossen wird, funktioniert die Software nicht mehr. Wenn Sie das Fenster geschlossen haben, können Sie es wieder mit einem Doppelklick auf die ``start.cmd`` - Datei öffnen.
+Öffnen Sie den heruntergeladenen Ordner und kopieren Sie die Dateien in ein gewünschtes Verzeichnis. Öffnen Sie ``Jungschar-Infoscreeen.exe`` mit einem Doppelklick.
 
 ## Bedienung
 
@@ -118,9 +92,7 @@ Nein, "Jungschar-Infoscreen" ist zu 100% kostenfrei.
 
 ### Welchen Plattformen werden unterstützt?
 
-"Jungschar-Infoscreen" funktioniert auf allen Windows, Linux und macOS, es wird zusätzlich empfohlen den Chrome-Webbrowser zu verwenden.
-
-
+"Jungschar-Infoscreen" funktioniert zurzeit nur von Windows unterstütz. An einer macOS und Linux Version wird gearbeitet.
 
 **Bei weiteren Fragen, schreiben Sie mir bitte eine E-Mail!**
 
@@ -134,5 +106,5 @@ Telefonnummer auf Anfrage
 
 <hr>
 
-Copyright © 2020, [Jonas Dorfinger](https://dorfingerjonas.at/). Diese Software ist [MIT lizenziert](./LICENSE).
+Copyright © 2020 - 2021, [Jonas Dorfinger](https://dorfingerjonas.at/). Diese Software ist [MIT lizenziert](./LICENSE).
 
