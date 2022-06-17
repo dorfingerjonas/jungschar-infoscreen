@@ -30,6 +30,6 @@
     "start": "^5.1.0"
   },
   "devDependencies": {
-    "electron": "^11.2.1"
+    "electron": "^15.5.5"
   }
 }
